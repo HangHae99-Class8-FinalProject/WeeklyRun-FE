@@ -44,7 +44,7 @@ export const StyleSpeed = styled.div`
   z-index: 999;
   display: flex;
   width: 100%;
-  top: 70%;
+  top: 80%;
   & > div {
     width: 100%;
     display: flex;
@@ -60,7 +60,7 @@ export const StyleSpeed = styled.div`
 `;
 export const StylePath = styled.div`
   width: 100%;
-  height: 18rem;
+  height: 36rem;
 `;
 export const StyleContentBox = styled.div`
   display: flex;
