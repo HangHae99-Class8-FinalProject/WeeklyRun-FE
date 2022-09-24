@@ -76,12 +76,16 @@ const CACHE_DYNAMIC_NAME = "dynamic-location";
 let cacheData = [];
 self.addEventListener("fetch", event => {
   event.respondWith(
-    caches.match(event.request).then(response => {
-      let fetchRequest = event.request.clone();
-      cacheData.push(fetchRequest);
-      caches.open(CACHE_DYNAMIC_NAME).then(cache => {
-        cache.addAll(cacheData);
-      });
+    caches.match(event.request).then(async response => {
+      try {
+        let fetchRequest = event.request.clone();
+        cacheData.push(fetchRequest);
+        caches.open(CACHE_DYNAMIC_NAME).then(cache => {
+          cache.addAll(cacheData);
+        });
+      } catch (error) {
+        console.error(error);
+      }
       return response;
     })
   );
