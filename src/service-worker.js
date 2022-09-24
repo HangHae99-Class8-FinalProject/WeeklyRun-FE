@@ -80,7 +80,7 @@ self.addEventListener("fetch", event => {
       let fetchRequest = event.request.clone();
       cacheData.push(fetchRequest);
       caches.open(CACHE_DYNAMIC_NAME).then(cache => {
-        cache.put(event.request, cacheData);
+        cache.put(event.request, ...cacheData);
       });
       return response;
     })
