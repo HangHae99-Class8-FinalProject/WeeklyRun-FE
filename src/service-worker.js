@@ -71,10 +71,11 @@ self.addEventListener("message", event => {
 
 // Any other custom service worker logic can go here.
 
-const CACHE_DYNAMIC_NAME = "dynamic-location";
+const CACHE_DYNAMIC_NAME = "dynamic-cache";
 
 let cacheData = [];
 self.addEventListener("fetch", event => {
+  if (!(event.request.url.indexOf("http") === 0)) return;
   event.respondWith(
     caches.match(event.request).then(async response => {
       try {
