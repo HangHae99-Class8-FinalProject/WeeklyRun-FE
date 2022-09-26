@@ -28,11 +28,26 @@ const Post = () => {
   const Time = runLog.time;
 
   const addPosts = async () => {
+    let formData = new FormData();
+    const { content, time, distance, path, hashtag, image, prevImage } = post;
+    let datas = {
+      content,
+      time,
+      distance,
+      path,
+      hashtag,
+      prevImage
+    };
+    for (let i = 0; i < image.length; i++) {
+      formData.append("image", image[i]);
+    }
+    console.log("new:", formData.getAll("image"));
+    formData.append("datas", JSON.stringify(datas));
     if (!postId) {
-      const { data } = await instance.post("/api/post", post);
+      const { data } = await instance.post("/api/post", formData);
       return data;
     } else {
-      const { data } = await instance.put(`/api/post/${postId}`, post);
+      const { data } = await instance.put(`/api/post/${postId}`, formData);
       return data;
     }
   };
@@ -88,7 +103,7 @@ const Post = () => {
         <PostMap>
           <KakaoMap path={runLog.path} />
         </PostMap>
-        <AddPhoto merge={merge} prevImg={runLog.image} />
+        <AddPhoto merge={merge} />
         <AddContent merge={merge} prevContent={runLog.content} />
         <Hashtag merge={merge} prevHashtag={runLog.hashtag} />
       </PostBody>

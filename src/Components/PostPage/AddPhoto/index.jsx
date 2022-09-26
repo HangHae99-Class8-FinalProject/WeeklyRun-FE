@@ -1,38 +1,42 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-import S3upload from "react-aws-s3";
 import imageCompression from "browser-image-compression";
+import { useParams } from "react-router-dom";
+import { instance } from "../../../Utils/Instance";
 
 import { postData } from "../../../Recoil/Atoms/PostData";
 import { useRecoilState } from "recoil";
-import { S3config } from "../../../Utils/S3Config";
 
 import { ReactComponent as PostCamera } from "../../../Icons/PostCamera.svg";
 
-window.Buffer = window.Buffer || require("buffer").Buffer;
-
-const AddPhoto = ({ merge, prevImg }) => {
-  const [previewImages, setPreviewImages] = useState(prevImg || []);
-  const [uploadImages, setUploadImages] = useState(prevImg || []);
+const AddPhoto = ({ merge }) => {
+  const [previewImages, setPreviewImages] = useState([]);
+  const [prevImage, setPrevImage] = useState([]);
+  const [uploadImages, setUploadImages] = useState([]);
   const [post, setPost] = useRecoilState(postData);
-  const imgRef = useRef();
 
-  // 이미지 업로드 로직
-  const onSubmitImg = async () => {
-    const length = imgRef.current.files.length;
-    if (length > uploadImages) {
-      const ReactS3Client = new S3upload(S3config);
-      for (let i = 0; i < length; i++) {
-        await ReactS3Client.uploadFile(imgRef.current.files[i], imgRef.current.files[i].name)
-          .then(data => {
-            uploadImages.push(data.location);
-          })
-          .catch(error => console.error(error));
-      }
+  const imgRef = useRef();
+  const { id: postId } = useParams();
+
+  console.log(prevImage);
+  console.log(uploadImages);
+
+  useEffect(() => {
+    async function getPostData() {
+      const res = await instance.get(`/api/post/${postId}`);
+      setPrevImage(res.data);
+      setPreviewImages(res.data);
     }
+    if (postId) {
+      getPostData();
+    }
+  }, []);
+
+  const onSubmitImg = async () => {
     setPost(prev => ({
       ...prev,
       image: uploadImages,
+      prevImage,
       isLoading: false
     }));
   };
@@ -43,6 +47,7 @@ const AddPhoto = ({ merge, prevImg }) => {
     }
     const imgArray = imgRef.current.files;
     let imgUrls = [...previewImages];
+    let images = [];
     const options = {
       maxSizeMB: 1,
       maxWidthOrHeight: 720,
@@ -53,23 +58,19 @@ const AddPhoto = ({ merge, prevImg }) => {
         const comporessedFile = await imageCompression(imgArray[i], options);
         const imgUrl = URL.createObjectURL(comporessedFile);
         imgUrls.push(imgUrl);
+        images.push(comporessedFile);
       }
     } catch (error) {
       console.error(error);
     }
     setPreviewImages(imgUrls);
+    setUploadImages(prev => prev.concat(images));
   };
 
   const deletePhoto = idx => {
+    setPrevImage(prevImage?.filter((_, index) => index !== idx));
     setPreviewImages(previewImages.filter((_, index) => index !== idx));
-    setUploadImages(uploadImages?.filter((_, index) => index !== idx));
-    const dataTranster = new DataTransfer();
-    Array.from(imgRef.current.files)
-      .filter((_, index) => index !== idx)
-      .forEach(file => {
-        dataTranster.items.add(file);
-      });
-    imgRef.current.files = dataTranster.files;
+    setUploadImages(uploadImages?.filter((_, index) => index + prevImage.length !== idx));
   };
 
   useEffect(() => {
@@ -81,18 +82,17 @@ const AddPhoto = ({ merge, prevImg }) => {
   return (
     <PhotoWrap>
       <AddButton>
-        <input ref={imgRef} type="file" multiple onChange={onChangeImg} />
+        <input ref={imgRef} name="image" type="file" accept="image/*" multiple onChange={onChangeImg} />
         <PostCamera />
-        <div>{previewImages.length}/5</div>
+        <div>{previewImages?.length}/5</div>
       </AddButton>
-      {previewImages &&
-        previewImages.map((img, idx) => {
-          return (
-            <AddButton key={idx}>
-              <PreviewImges src={img} alt="첨부한 이미지" onClick={() => deletePhoto(idx)} />
-            </AddButton>
-          );
-        })}
+      {previewImages?.map((img, idx) => {
+        return (
+          <AddButton key={idx}>
+            <PreviewImges src={img} alt="첨부한 이미지" onClick={() => deletePhoto(idx)} />
+          </AddButton>
+        );
+      })}
     </PhotoWrap>
   );
 };

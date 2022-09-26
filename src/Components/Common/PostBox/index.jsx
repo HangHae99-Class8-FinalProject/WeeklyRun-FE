@@ -140,7 +140,7 @@ const PostBox = ({ posts, index }) => {
             </StyleSpeed>
             <KakaoMap path={posts.path}></KakaoMap>
           </SwiperSlide>
-          {posts.image.map((img, index) => (
+          {posts.prevImage.map((img, index) => (
             <SwiperSlide key={index}>
               <StyleImg src={img} alt="img"></StyleImg>
             </SwiperSlide>

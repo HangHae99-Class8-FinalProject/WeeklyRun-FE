@@ -4,7 +4,6 @@ import Nav from "../Nav";
 import { StyleLayout } from "./style";
 import { useRecoilState } from "recoil";
 import { NavState } from "../../../Recoil/Atoms/OptionAtoms";
-import { useParams } from "react-router-dom";
 
 const Layout = ({ children, show }) => {
   const [isShow, setIsShow] = useRecoilState(NavState);

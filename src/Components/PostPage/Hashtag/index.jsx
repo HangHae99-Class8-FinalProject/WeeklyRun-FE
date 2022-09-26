@@ -86,13 +86,13 @@ const HashTagBox = styled.div`
   border: none;
   flex-wrap: nowrap;
   & span {
-    font-family: "Noto Sans CJK KR";
+    display: flex;
     width: 4rem;
     height: 1.7rem;
     font-size: 1.2rem;
     color: #1a1a1a;
     text-align: center;
-    line-height: 1.7rem;
+    line-height: 2.4rem;
   }
 `;
 

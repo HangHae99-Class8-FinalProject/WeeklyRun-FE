@@ -9,8 +9,7 @@ export const postData = atom({
     image: [],
     hashtag: [],
     time: {},
-    userId: 2,
-    nickname: "test",
+    prevImage: "",
     isLoading: false
   }
 });

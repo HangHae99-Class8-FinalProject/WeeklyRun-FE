@@ -6,16 +6,13 @@ import { ReactComponent as Home } from "../../../Icons/home.svg";
 import { ReactComponent as Search } from "../../../Icons/search.svg";
 import { ReactComponent as Run } from "../../../Icons/run.svg";
 import { ReactComponent as Mypage } from "../../../Icons/mypage.svg";
-import { ReactComponent as RightSearch } from "../../../Icons/searchRight.svg";
 
 import { useUserProfileMutation } from "../../../Hooks/useProfile";
-import S3upload from "react-aws-s3";
 import { instance } from "../../../Utils/Instance";
 import { useNavigate, useLocation } from "react-router-dom";
 import imageCompression from "browser-image-compression";
 import { useDeletePost } from "../../../Hooks/useDeletePost";
-import { S3config } from "../../../Utils/S3Config";
-window.Buffer = window.Buffer || require("buffer").Buffer;
+
 const Nav = () => {
   const { state } = useLocation();
   const { mutate: deletePost } = useDeletePost();
@@ -26,34 +23,27 @@ const Nav = () => {
   const navEvent = useRecoilValue(NavStates);
   const postData = useRecoilValue(NavPostData);
   const imgVal = useRef(null);
-  const [submit, setSubmit] = useState({
-    image: ""
-  });
+
   const options = {
     maxSizeMB: 1,
-    maxWidthOrHeight: 1920,
+    maxWidthOrHeight: 720,
     useWebWorker: true
   };
   const accessToken = localStorage.getItem("userData");
   const parseData = JSON.parse(accessToken);
   const nickname = parseData.nickname;
   const provider = parseData.provider;
-  const userId = parseData.userId;
+
   const submitImg = async () => {
     let file = imgVal.current.files[0];
-    let newFileName = imgVal.current.files[0].name;
+    console.log(file);
+    const formData = new FormData();
     const compressedFile = await imageCompression(file, options);
-    const ReactS3Client = new S3upload(S3config);
-    ReactS3Client.uploadFile(compressedFile, newFileName).then(async data => {
-      if (data.status === 204) {
-        let imgUrl = data.location;
-        const newimg = { ...submit, image: imgUrl };
-        postProfile(newimg);
-      } else {
-        window.alert("사진 업로드에 오류가 있어요! 관리자에게 문의해주세요.");
-      }
-    });
+    console.log(compressedFile);
+    formData.append("image", compressedFile);
+    postProfile(formData);
   };
+
   const onChangeImg = e => {
     const imageFile = e.target.files[0];
     const imageUrl = URL.createObjectURL(imageFile);
@@ -158,6 +148,7 @@ const Nav = () => {
                   <input
                     style={{ display: "none" }}
                     onChange={onChangeImg}
+                    name="image"
                     id="inputFile"
                     type="file"
                     accept="image/*"
