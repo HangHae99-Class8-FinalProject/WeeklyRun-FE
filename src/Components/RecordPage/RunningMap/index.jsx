@@ -29,7 +29,7 @@ const RunningMap = ({ stopInterval, endRun }) => {
 
   const getDistance = async location => {
     try {
-      const res = await instance.post("/api/user/location", location);
+      const res = await instance.post("/api/user/location", { location });
 
       return res.data;
     } catch (error) {
@@ -40,7 +40,7 @@ const RunningMap = ({ stopInterval, endRun }) => {
   const getDistanceQuery = useMutation(location => getDistance(location), {
     onSuccess: data => {
       if (data >= 0) {
-        setDistance(prev => prev + 1000);
+        setDistance(data);
       }
     }
   });
@@ -63,7 +63,6 @@ const RunningMap = ({ stopInterval, endRun }) => {
         },
         { enableHighAccuracy: true, maximumAge: 0 }
       );
-      getDistanceQuery.mutate(state.center);
     } else {
       setState(prev => ({
         ...prev,
@@ -85,7 +84,7 @@ const RunningMap = ({ stopInterval, endRun }) => {
                 lng: position.coords.longitude // 경도
               }
             }));
-            getDistanceQuery.mutate(state.center);
+            getDistanceQuery.mutate(path.path);
             setPath(prev => ({
               ...prev,
               path: prev.path.concat(state.center),

@@ -70,13 +70,3 @@ self.addEventListener("message", event => {
 });
 
 // Any other custom service worker logic can go here.
-
-const cacheName = "Dynamic-cache";
-
-const contentToCache = [];
-
-self.addEventListener("install", e => {
-  e.waitUntil(caches.open(cacheName)).then(cache => {
-    return cache.addAll(contentToCache);
-  });
-});

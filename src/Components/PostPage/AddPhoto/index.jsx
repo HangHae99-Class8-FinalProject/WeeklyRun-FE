@@ -18,9 +18,6 @@ const AddPhoto = ({ merge }) => {
   const imgRef = useRef();
   const { id: postId } = useParams();
 
-  console.log(prevImage);
-  console.log(uploadImages);
-
   useEffect(() => {
     async function getPostData() {
       const res = await instance.get(`/api/post/${postId}`);

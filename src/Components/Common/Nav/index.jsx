@@ -36,10 +36,8 @@ const Nav = () => {
 
   const submitImg = async () => {
     let file = imgVal.current.files[0];
-    console.log(file);
     const formData = new FormData();
     const compressedFile = await imageCompression(file, options);
-    console.log(compressedFile);
     formData.append("image", compressedFile);
     postProfile(formData);
   };

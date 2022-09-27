@@ -87,7 +87,6 @@ const HashTagBox = styled.div`
   flex-wrap: nowrap;
   & span {
     display: flex;
-    width: 4rem;
     height: 1.7rem;
     font-size: 1.2rem;
     color: #1a1a1a;

@@ -60,10 +60,8 @@ function ProfileUpload({ userData }) {
       email: userData.email
     };
     formData.append("datas", JSON.stringify(datas));
-    formData.append("image", image);
-    const { data } = await instance.post("/api/user/signup", formData, {
-      headers: { "Content-Type": "multipart/form-data" }
-    });
+    image ? formData.append("image", image) : null;
+    const { data } = await instance.post("/api/user/signup", formData);
     return data;
   };
 

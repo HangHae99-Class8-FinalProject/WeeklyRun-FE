@@ -30,7 +30,7 @@ const Post = () => {
   const addPosts = async () => {
     let formData = new FormData();
     const { content, time, distance, path, hashtag, image, prevImage } = post;
-    let datas = {
+    const datas = {
       content,
       time,
       distance,
@@ -38,10 +38,9 @@ const Post = () => {
       hashtag,
       prevImage
     };
-    for (let i = 0; i < image.length; i++) {
-      formData.append("image", image[i]);
-    }
-    console.log("new:", formData.getAll("image"));
+    image.map(imageData => {
+      formData.append("image", imageData);
+    });
     formData.append("datas", JSON.stringify(datas));
     if (!postId) {
       const { data } = await instance.post("/api/post", formData);
