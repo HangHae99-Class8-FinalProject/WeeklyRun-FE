@@ -5,6 +5,7 @@ export const StyleFeedWrap = styled.div`
   padding: 2.4rem 1.6rem 2rem;
   align-items: flex-start;
   flex-direction: column;
+  margin-bottom: 5rem;
 `;
 export const StyleFilter = styled.div`
   display: flex;

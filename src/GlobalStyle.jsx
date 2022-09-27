@@ -6,7 +6,6 @@ const GlobalStyle = createGlobalStyle`
 
  }
  body{
-  /* background-color: blue; */
   font-size: 1.6rem;
   margin: 0;
   padding: 0;
