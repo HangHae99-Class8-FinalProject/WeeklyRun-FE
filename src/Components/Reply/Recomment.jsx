@@ -19,7 +19,7 @@ function Recomment({ id }) {
   useEffect(() => {
     if (inView && hasNextPage) fetchNextPage();
   }, [inView, hasNextPage]);
-  
+
   return (
     <ReplyBox>
       {data?.pages.map((page, i) => {
@@ -27,9 +27,9 @@ function Recomment({ id }) {
           <React.Fragment key={i}>
             {page?.Recomment.map(reply => {
               return (
-                <Content key={reply.recommentId}>
+                <div key={reply.recommentId}>
                   <RecommentItem data={reply} />
-                </Content>
+                </div>
               );
             })}
           </React.Fragment>
@@ -38,13 +38,8 @@ function Recomment({ id }) {
       {isFetchingNextPage ? <>로딩중</> : <div ref={ref}></div>}
     </ReplyBox>
   );
-  }
-    
+}
+
 export default Recomment;
 
-const ReplyBox = styled.div`
-  width: 100%;
-`;
-    
-
-const Content = styled.div``;
+const ReplyBox = styled.div``;

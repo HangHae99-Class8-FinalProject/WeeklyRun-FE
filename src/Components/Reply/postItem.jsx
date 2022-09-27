@@ -27,12 +27,12 @@ function PostItem({ data }) {
         <PostBody>
           <Nick>{data.nickname}</Nick>
           <div>{data.content}</div>
+          <PostFooter>
+            <div>{displayedAt(data.createdAt)}</div>
+            <div>좋아요{data.like}개</div>
+            <div onClick={onShowInput}>답글달기</div>
+          </PostFooter>
         </PostBody>
-        <PostFooter>
-          <Time>{displayedAt(data.createdAt)}</Time>
-          <Like>좋아요{data.like}개</Like>
-          <Write onClick={onShowInput}>답글달기</Write>
-        </PostFooter>
       </PostBox>
       <ReplyInput />
     </>
@@ -41,13 +41,11 @@ function PostItem({ data }) {
 export default PostItem;
 
 const PostBox = styled.div`
-  font-size: 1rem;
   display: flex;
-  align-items: center;
   padding: 1.5rem 1.6rem;
   gap: 0.8rem;
-  height: 7rem;
-  border-bottom: 0.1rem solid #e6e6e6;
+  max-width: 100vw;
+  border-bottom: 1px solid #e6e6e6;
   & img {
     width: 4rem;
     height: 4rem;
@@ -55,33 +53,18 @@ const PostBox = styled.div`
   }
 `;
 const PostBody = styled.div`
-  align-items: flex-start;
-  gap: 0.2rem;
-  height: 4.2rem;
-  width: 29.7rem;
+  font-size: 1rem;
 `;
 const Nick = styled.div`
-  line-height: 1rem;
   font-family: "Anton";
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 `;
+
 const PostFooter = styled.div`
   display: flex;
-  width: 40rem;
-  position: relative;
-  right: 14.6rem;
-  top: 3rem;
-  color: #aaa;
-  align-items: center;
-`;
-const Time = styled.div`
-  padding-right: 1rem;
-`;
-const Like = styled.div`
-  padding-right: 1rem;
-`;
-const Write = styled.div`
-  color: #aaa;
-  background-color: transparent;
+  gap: 1.6rem;
+  margin-top: 1rem;
+  color: #999999;
 `;

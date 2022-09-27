@@ -19,7 +19,6 @@ const CommentList = ({ reply }) => {
   const [showReply, setShowReply] = useState(false);
   const [inputState, setInpuState] = useRecoilState(replyState);
   const [showModal, setShowModal] = useState(false);
-  const [showArrow, setShowArrow] = useState(false);
 
   const userData = JSON.parse(window.localStorage.getItem("userData"));
 
@@ -74,12 +73,10 @@ const CommentList = ({ reply }) => {
   const onTouchStart = e => {
     if (userData.nickname === reply.nickname) {
       setFirstTouchX(e.changedTouches[0].pageX);
-      setShowArrow(true);
     }
   };
 
   const onTouchEnd = e => {
-    setShowArrow(false);
     if (userData.nickname !== reply.nickname) return;
     let totalX = firstTouchX - e.changedTouches[0].pageX;
 
@@ -112,8 +109,8 @@ const CommentList = ({ reply }) => {
             <Nick>{reply.nickname}</Nick>
             <div>{reply.comment}</div>
             <CommentFooter>
-              <Time>{displayedAt(reply.createdAt)}</Time>
-              <Write onClick={onShowInputRecomment}>답글달기</Write>
+              <div>{displayedAt(reply.createdAt)}</div>
+              <div onClick={onShowInputRecomment}>답글달기</div>
               {!showReply && (
                 <div onClick={onShowRecomment}>
                   {reply.recommentNum > 0 ? <>답글 {reply.recommentNum}개 더보기</> : null}
@@ -122,11 +119,6 @@ const CommentList = ({ reply }) => {
               {showReply && <div onClick={onShowRecomment}>답글 닫기</div>}
             </CommentFooter>
           </CommentBody>
-          {showArrow && (
-            <LottieWrap>
-              <Lottie animationData={LeftArrow} />
-            </LottieWrap>
-          )}
         </CommentWrap>
         {reply.nickname === userData.nickname && (
           <>
@@ -155,20 +147,13 @@ export default CommentList;
 
 const Body = styled.div`
   display: flex;
-  width: 100%;
   transition: all 0.5s ease-in-out;
-  align-items: center;
-`;
-
-const LottieWrap = styled.div`
-  position: relative;
-  right: -3rem;
-  top: -3rem;
-  width: 25.5%;
-  height: 50%;
+  padding: 1.5rem 1.6rem;
 `;
 
 const ButtonWrap = styled.div`
+  width: 6rem;
+  height: 7.2rem;
   display: flex;
   & button {
     border: none;
@@ -178,12 +163,8 @@ const ButtonWrap = styled.div`
 const CommentWrap = styled.div`
   font-size: 1rem;
   display: flex;
-  align-items: center;
-  padding: 1.5rem 1.6rem;
   gap: 0.8rem;
-  height: 7rem;
-  min-width: 90vw;
-
+  min-width: 94vw;
   & img {
     width: 4rem;
     height: 4rem;
@@ -193,28 +174,18 @@ const CommentWrap = styled.div`
 
 const CommentFooter = styled.div`
   display: flex;
-  color: #aaa;
-  position: relative;
-  top: 1.5rem;
-`;
-
-const Time = styled.div`
-  padding-right: 1rem;
-`;
-const Write = styled.div`
-  padding-right: 1rem;
+  color: #999999;
+  margin-top: 1rem;
+  gap: 1.6rem;
 `;
 
 const CommentBody = styled.div`
-  align-items: flex-start;
-  gap: 0.2rem;
-  height: 4.2rem;
-  width: 70%;
+  width: 80%;
 `;
 
 const Nick = styled.div`
-  line-height: 1rem;
   font-family: "Anton";
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 `;

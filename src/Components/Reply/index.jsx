@@ -35,6 +35,7 @@ const ReplyCom = () => {
 export default ReplyCom;
 
 const Body = styled.div`
+  width: 100%;
   overflow-x: hidden;
 `;
 const HeaderWrap = styled.div`

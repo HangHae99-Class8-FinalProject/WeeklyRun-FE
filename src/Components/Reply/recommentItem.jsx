@@ -11,13 +11,10 @@ import { ReactComponent as Profile } from "../../Icons/myPageProfile.svg";
 import { useRecoilState } from "recoil";
 import { replyState } from "../../Recoil/Atoms/ReplyAtoms";
 import Modal from "../Common/Modal/Modal";
-import Lottie from "lottie-react";
-import LeftArrow from "../../Lottie/LeftArrow.json";
 
 function RecommentItem({ data }) {
   const [inputState, setInputState] = useRecoilState(replyState);
   const [showModal, setShowModal] = useState(false);
-  const [showArrow, setShowArrow] = useState(false);
   const queryClient = useQueryClient();
 
   //대댓글 삭제
@@ -54,12 +51,10 @@ function RecommentItem({ data }) {
   const onTouchStart = e => {
     if (userData.nickname === data.nickname) {
       setFirstTouchX(e.changedTouches[0].pageX);
-      setShowArrow(true);
     }
   };
 
   const onTouchEnd = e => {
-    setShowArrow(false);
     if (userData.nickname !== data.nickname) return;
     let totalX = e.changedTouches[0].pageX - firstTouchX;
     if (200 > totalX || 400 > totalX > 300) {
@@ -92,11 +87,6 @@ function RecommentItem({ data }) {
               <div>{displayedAt(data.createdAt)}</div>
             </RecommentFooter>
           </RecommentBody>
-          {showArrow && (
-            <LottieWrap>
-              <Lottie animationData={LeftArrow} />
-            </LottieWrap>
-          )}
         </RecommentBox>
         {data.nickname === userData.nickname && (
           <ButtonWrap>
@@ -121,29 +111,21 @@ function RecommentItem({ data }) {
 export default RecommentItem;
 
 const Body = styled.div`
+  padding: 0rem 3.2rem;
   display: flex;
-  width: 100%;
-  margin-left: 3rem;
   transition: all 0.5s ease-in-out;
-  align-items: center;
-`;
-
-const LottieWrap = styled.div`
-  position: relative;
-  right: -16rem;
-  top: -3rem;
-  width: 25.5%;
-  height: 50%;
 `;
 
 const Nick = styled.div`
-  line-height: 1rem;
   font-family: "Anton";
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 `;
 
 const ButtonWrap = styled.div`
+  width: 6rem;
+  height: 7.2rem;
   display: flex;
   & button {
     border: none;
@@ -151,16 +133,11 @@ const ButtonWrap = styled.div`
 `;
 
 const RecommentBox = styled.div`
-  margin-left: 3rem;
   font-size: 1rem;
   display: flex;
-  align-items: center;
-
-  padding: 1.5rem 0rem 1.5rem 1.6rem;
+  padding: 1.5rem 1.6rem;
   gap: 0.8rem;
-  height: 7rem;
-  min-width: 79vw;
-
+  min-width: 81.6vw;
   & img {
     width: 4rem;
     height: 4rem;
@@ -169,17 +146,10 @@ const RecommentBox = styled.div`
 `;
 
 const RecommentBody = styled.div`
-  align-items: flex-start;
-  gap: 0.2rem;
-  height: 4.2rem;
-
-  & div:first-child {
-    line-height: 1rem;
-  }
+  width: 80%;
 `;
 
 const RecommentFooter = styled.div`
-  position: relative;
-  top: 1.5rem;
-  color: #aaa;
+  color: #999999;
+  margin-top: 1rem;
 `;
