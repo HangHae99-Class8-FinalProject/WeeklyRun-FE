@@ -121,7 +121,6 @@ const PostHeader = styled.div`
   display: flex;
   align-items: flex-start;
   padding: 0rem;
-
   height: 4.3rem;
 `;
 

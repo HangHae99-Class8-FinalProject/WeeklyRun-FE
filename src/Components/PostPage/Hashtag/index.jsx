@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import { useRecoilState } from "recoil";
 import { postData } from "../../../Recoil/Atoms/PostData";
+import { ReactComponent as CancelIcon } from "../../../Icons/cancel_Icon.svg";
 
 const Hashtag = ({ merge, prevHashtag }) => {
   const [hashtag, onChangeHashtag, setHashtag] = useInput("");
@@ -12,7 +13,7 @@ const Hashtag = ({ merge, prevHashtag }) => {
   const [post, setPost] = useRecoilState(postData);
 
   useEffect(() => {
-    hashArr.length >= 6 ? setStop(true) : setStop(false);
+    hashArr.length >= 5 ? setStop(true) : setStop(false);
   }, [hashArr]);
 
   const onKeyPress = e => {
@@ -45,62 +46,75 @@ const Hashtag = ({ merge, prevHashtag }) => {
 
   return (
     <HashTagWrap>
-      {hashArr.map((hash, idx) => {
-        return (
-          <HashTagBox key={idx} value={hash} onClick={deleteTagItem}>
-            <span>{"#" + hash}</span>
-          </HashTagBox>
-        );
-      })}
-      {!stop && (
+      <InputWrap>
         <HashTagInput
           type="text"
           value={hashtag}
           onChange={onChangeHashtag}
           onKeyUp={onKeyPress}
-          placeholder="#해시태그"
           maxLength={10}
+          placeholder="#태그 입력 ( 최대10글자, 5개 )"
         />
-      )}
-      {stop && <div>해시태그는 6개 까지만 등록 가능합니다.</div>}
+        <button onClick={submitTagItem} disabled={stop}>
+          + 추가
+        </button>
+      </InputWrap>
+      <TagBox>
+        {hashArr.map((hash, idx) => {
+          return (
+            <div key={idx} value={hash} onClick={deleteTagItem}>
+              <span>{"#" + hash}</span>
+              <CancelIcon />
+            </div>
+          );
+        })}
+      </TagBox>
     </HashTagWrap>
   );
 };
 
 export default Hashtag;
 
-const HashTagWrap = styled.div`
-  display: flex;
-  padding: 0 1.6rem;
-  gap: 1rem;
-  flex-wrap: wrap;
-`;
+const HashTagWrap = styled.div``;
 
-const HashTagBox = styled.div`
-  padding: 0.1rem 1rem 0.4rem;
-  gap: 1rem;
-  min-width: 6rem;
-  height: 2.2rem;
-  background: #e6e6e6;
-  border-radius: 2rem;
-  border: none;
-  flex-wrap: nowrap;
-  & span {
-    display: flex;
-    height: 1.7rem;
-    font-size: 1.2rem;
-    color: #1a1a1a;
-    text-align: center;
-    line-height: 2.4rem;
+const InputWrap = styled.div`
+  letter-spacing: 8rem;
+  border-bottom: 1px solid #e6e6e6;
+  border-top: 1px solid #e6e6e6;
+  padding: 1rem 1.5rem;
+  display: flex;
+
+  & button {
+    border: none;
+    background-color: inherit;
+    font-size: 1.6rem;
+    opacity: 0.4;
   }
 `;
 
 const HashTagInput = styled.input`
+  font-size: 1.6rem;
   border: none;
-  padding: 0.1rem 1rem 0.4rem;
+  width: 77vw;
+  &:focus {
+    outline: none;
+  }
+`;
+
+const TagBox = styled.div`
+  padding: 1.3rem;
+  display: flex;
   gap: 1rem;
-  width: 6rem;
-  height: 2.2rem;
-  background: #e6e6e6;
-  border-radius: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 10rem;
+  & div {
+    display: flex;
+    padding: 0.5rem 1.2rem;
+    background-color: #e6e6e6;
+    border-radius: 10px;
+    align-items: center;
+  }
+  & span {
+    margin-right: 1rem;
+  }
 `;

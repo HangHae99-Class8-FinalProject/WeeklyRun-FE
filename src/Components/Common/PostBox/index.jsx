@@ -183,9 +183,9 @@ const PostBox = ({ posts, index }) => {
         <StyleContent>{posts?.content}</StyleContent>
         <StyleHashBox>
           {posts?.hashtag.map((hash, idx) => (
-            <StyleHash key={idx} onClick={() => linkToSearch(hash)}>
+            <div key={idx} onClick={() => linkToSearch(hash)}>
               <span>#{hash}</span>
-            </StyleHash>
+            </div>
           ))}
         </StyleHashBox>
         <StyleGood>

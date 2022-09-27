@@ -103,12 +103,20 @@ export const StyleContent = styled.div`
   padding: 0px 0.2rem 1rem;
 `;
 export const StyleHashBox = styled.div`
+  font-size: 1.2rem;
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 0.5rem;
-  height: 2.2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+  & div {
+    display: flex;
+    padding: 0.5rem 1rem;
+    background-color: #e6e6e6;
+    border-radius: 10px;
+    align-items: center;
+  }
+  & span {
+    margin-right: 1rem;
+  }
 `;
 export const StyleHash = styled.div`
   display: flex;
