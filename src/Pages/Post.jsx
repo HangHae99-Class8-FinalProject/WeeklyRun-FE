@@ -119,8 +119,6 @@ export default Post;
 
 const PostHeader = styled.div`
   display: flex;
-  align-items: flex-start;
-  padding: 0rem;
   height: 4.3rem;
 `;
 
@@ -130,11 +128,6 @@ const HeaderItems = styled.div`
   padding: 1rem 1.6rem;
   width: 100%;
   border-bottom: 0.1rem solid #e6e6e6;
-  & div {
-    font-family: "Noto Sans CJK KR";
-    font-size: 1.6rem;
-    line-height: 2.3rem;
-  }
   & > div:last-child {
     color: #f03800;
   }
@@ -145,9 +138,9 @@ const PostBody = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 0rem;
+  padding: 2rem 2rem 0rem;
 `;
 
 const PostMap = styled.div`
-  padding: 2rem 2rem 0rem;
-  width: 35.2rem;
+  width: 100%;
 `;

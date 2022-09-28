@@ -97,7 +97,7 @@ const AddPhoto = ({ merge }) => {
 export default AddPhoto;
 
 const PhotoWrap = styled.div`
-  padding: 2rem 1.6rem;
+  padding: 2rem 0;
   display: flex;
   gap: 2rem;
   border-bottom: 0.1rem solid #e6e6e6;

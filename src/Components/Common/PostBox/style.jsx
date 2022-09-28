@@ -44,7 +44,8 @@ export const StyleSpeed = styled.div`
   z-index: 999;
   display: flex;
   width: 100%;
-  top: 80%;
+  height: 100%;
+  padding-top: 90%;
   & > div {
     width: 100%;
     display: flex;

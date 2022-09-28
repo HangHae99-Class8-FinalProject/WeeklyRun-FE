@@ -83,6 +83,7 @@ const InputWrap = styled.div`
   border-top: 1px solid #e6e6e6;
   padding: 1rem 1.5rem;
   display: flex;
+  justify-content: space-between;
 
   & button {
     border: none;
@@ -95,7 +96,7 @@ const InputWrap = styled.div`
 const HashTagInput = styled.input`
   font-size: 1.6rem;
   border: none;
-  width: 77vw;
+  width: 80%;
   &:focus {
     outline: none;
   }
