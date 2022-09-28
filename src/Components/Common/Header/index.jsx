@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { ReactComponent as MainLogo } from "../../../Icons/MainLogo.svg";
+import { ReactComponent as MainLogo } from "../../../Static/Icons/MainLogo.svg";
 
 const Header = () => {
   return (

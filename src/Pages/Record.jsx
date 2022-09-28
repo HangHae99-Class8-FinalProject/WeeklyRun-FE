@@ -9,9 +9,9 @@ import { runData } from "../Recoil/Atoms/RunData";
 import { useNavigate } from "react-router-dom";
 import Modal from "../Components/Common/Modal/Modal";
 
-import { ReactComponent as StopIcon } from "../Icons/StopIcon.svg";
-import { ReactComponent as EndIcon } from "../Icons/EndIcon.svg";
-import { ReactComponent as StartIcon } from "../Icons/StartIcon.svg";
+import { ReactComponent as StopIcon } from "../Static/Icons/StopIcon.svg";
+import { ReactComponent as EndIcon } from "../Static/Icons/EndIcon.svg";
+import { ReactComponent as StartIcon } from "../Static/Icons/StartIcon.svg";
 
 const Record = () => {
   const [stopInterval, setStopInterval] = useState(true);

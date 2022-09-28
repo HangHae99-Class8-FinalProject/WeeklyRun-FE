@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import styled from "styled-components";
-import { ReactComponent as Profile } from "../../../Icons/myPageProfile.svg";
+import { ReactComponent as Profile } from "../../../Static/Icons/myPageProfile.svg";
 import { useNavigate } from "react-router-dom";
 
 const RankBody = ({ rankData }) => {

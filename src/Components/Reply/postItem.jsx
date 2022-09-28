@@ -3,7 +3,7 @@ import styled from "styled-components";
 import displayedAt from "../../Utils/displayAt";
 import ReplyInput from "./ReplyInput";
 import { useParams } from "react-router-dom";
-import { ReactComponent as Profile } from "../../Icons/myPageProfile.svg";
+import { ReactComponent as Profile } from "../../Static/Icons/myPageProfile.svg";
 import { useRecoilState } from "recoil";
 import { replyState } from "../../Recoil/Atoms/ReplyAtoms";
 

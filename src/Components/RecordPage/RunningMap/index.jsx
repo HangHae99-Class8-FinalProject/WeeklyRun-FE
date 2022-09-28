@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import { runData } from "../../../Recoil/Atoms/RunData";
 import useInterval from "../../../Hooks/useInterval";
-import Marker from "../../../Icons/Map_Marker.svg";
+import Marker from "../../../Static/Icons/Map_Marker.svg";
 import Loading from "../../Common/Loading/Loading";
 import { useMutation } from "react-query";
 import { instance } from "../../../Utils/Instance";

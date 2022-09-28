@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 
 import styled from "styled-components";
 
-import ErrorIcon from "../Icons/warning.png";
+import ErrorIcon from "../Static/Icons/warning.png";
 import { useNavigate } from "react-router-dom";
 const ErrorPage = () => {
   const navigate = useNavigate();

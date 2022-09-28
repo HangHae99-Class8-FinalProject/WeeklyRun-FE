@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import { useRecoilState } from "recoil";
 import { postData } from "../../../Recoil/Atoms/PostData";
-import { ReactComponent as CancelIcon } from "../../../Icons/cancel_Icon.svg";
+import { ReactComponent as CancelIcon } from "../../../Static/Icons/cancel_Icon.svg";
 
 const Hashtag = ({ merge, prevHashtag }) => {
   const [hashtag, onChangeHashtag, setHashtag] = useInput("");

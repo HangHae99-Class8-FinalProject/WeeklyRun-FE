@@ -21,10 +21,10 @@ import {
   StyleTime
 } from "./style";
 
-import { ReactComponent as Heart } from "../../../Icons/heart.svg";
-import { ReactComponent as CommentIcon } from "../../../Icons/comment.svg";
+import { ReactComponent as Heart } from "../../../Static/Icons/heart.svg";
+import { ReactComponent as CommentIcon } from "../../../Static/Icons/comment.svg";
 
-import { ReactComponent as Profile } from "../../../Icons/myPageProfile.svg";
+import { ReactComponent as Profile } from "../../../Static/Icons/myPageProfile.svg";
 
 import displayedAt from "../../../Utils/displayAt";
 import KakaoMap from "../../Common/KakaoMap/index";

@@ -2,12 +2,12 @@ import React, { useCallback, useState, useRef } from "react";
 import styled from "styled-components";
 import { useMutation, useQueryClient } from "react-query";
 
-import { ReactComponent as ReplyUpdate } from "../../Icons/ReplyUpdate.svg";
-import { ReactComponent as ReplyDelete } from "../../Icons/ReplyDelete.svg";
+import { ReactComponent as ReplyUpdate } from "../../Static/Icons/ReplyUpdate.svg";
+import { ReactComponent as ReplyDelete } from "../../Static/Icons/ReplyDelete.svg";
 
 import displayedAt from "../../Utils/displayAt";
 import { delRecomment } from "../../Hooks/useRecomment";
-import { ReactComponent as Profile } from "../../Icons/myPageProfile.svg";
+import { ReactComponent as Profile } from "../../Static/Icons/myPageProfile.svg";
 import { useRecoilState } from "recoil";
 import { replyState } from "../../Recoil/Atoms/ReplyAtoms";
 import Modal from "../Common/Modal/Modal";

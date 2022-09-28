@@ -5,7 +5,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { RecoilRoot } from "recoil";
 import GlobalStyle from "./GlobalStyle";
 import Responsive from "./Responsive";
-import "./Font/Fonts.css";
+import "./Static/Font/Fonts.css";
 
 const queryClient = new QueryClient();
 

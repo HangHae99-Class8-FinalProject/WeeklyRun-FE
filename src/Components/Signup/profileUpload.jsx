@@ -7,8 +7,8 @@ import imageCompression from "browser-image-compression";
 import { instance } from "../../Utils/Instance";
 import useQueryDebounce from "../../Hooks/useQueryDebounce";
 
-import { ReactComponent as SmallCamera } from "../../Icons/sm-camera.svg";
-import Profile from "../../Icons/SignUpProfile.svg";
+import { ReactComponent as SmallCamera } from "../../Static/Icons/sm-camera.svg";
+import Profile from "../../Static/Icons/SignUpProfile.svg";
 
 function ProfileUpload({ userData }) {
   const [nickname, setNickname] = useState("");

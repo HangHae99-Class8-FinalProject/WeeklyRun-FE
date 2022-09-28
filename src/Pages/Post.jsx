@@ -12,7 +12,7 @@ import { instance } from "../Utils/Instance";
 import Modal from "../Components/Common/Modal/Modal";
 import Loading from "../Components/Common/Loading/Loading";
 
-import { ReactComponent as BackIcon } from "../Icons/BackIcon.svg";
+import { ReactComponent as BackIcon } from "../Static/Icons/BackIcon.svg";
 
 const Post = () => {
   const [merge, setMerge] = useState(false);

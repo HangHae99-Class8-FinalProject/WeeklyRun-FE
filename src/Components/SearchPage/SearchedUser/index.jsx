@@ -3,7 +3,7 @@ import { instance } from "../../../Utils/Instance";
 import { useQuery } from "react-query";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import Profile from "../../../Icons/myPageProfile.svg";
+import Profile from "../../../Static/Icons/myPageProfile.svg";
 import useQueryDebounce from "../../../Hooks/useQueryDebounce";
 
 const SearchedUser = ({ searchTag }) => {

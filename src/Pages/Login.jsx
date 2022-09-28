@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 
-import { ReactComponent as KakaoLoginIcon } from "../Icons/KakaoLoginIcon.svg";
-import { ReactComponent as NaverLoginIcon } from "../Icons/NaverLoginIcon.svg";
-import { ReactComponent as Logo } from "../Icons/LoginLogo.svg";
+import { ReactComponent as KakaoLoginIcon } from "../Static/Icons/KakaoLoginIcon.svg";
+import { ReactComponent as NaverLoginIcon } from "../Static/Icons/NaverLoginIcon.svg";
+import { ReactComponent as Logo } from "../Static/Icons/LoginLogo.svg";
 import Modal from "../Components/Common/Modal/Modal";
 
 const KAKAO_LOGIN = "https://yunseong.shop/api/kakao/callback";

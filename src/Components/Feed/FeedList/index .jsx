@@ -5,7 +5,7 @@ import LikeList from "../LikeList/index";
 import MainList from "../MainList/index";
 import { useState } from "react";
 
-import BannerImage from "../../../Icons/eventBanner.jpeg";
+import BannerImage from "../../../Static/Icons/eventBanner.jpeg";
 
 const googleForms =
   "https://docs.google.com/forms/d/e/1FAIpQLSdZDs9en5KjtUB_eSl19kfMrvtTITl31Y57J7au95ZPUkZ2SQ/viewform?usp=sf_link";

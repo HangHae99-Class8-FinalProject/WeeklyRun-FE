@@ -8,7 +8,7 @@ import SearchedUser from "../Components/SearchPage/SearchedUser";
 import useInput from "../Hooks/useInput";
 import Layout from "../Components/Common/Layout";
 
-import { ReactComponent as SearchIcon } from "../Icons/SearchIcon.svg";
+import { ReactComponent as SearchIcon } from "../Static/Icons/SearchIcon.svg";
 
 const Search = () => {
   const { state } = useLocation();

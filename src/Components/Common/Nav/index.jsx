@@ -2,10 +2,10 @@ import React, { useRef, useState } from "react";
 import { StyleNav, StyleShow, StyleButton, StyleShowBackgroud } from "./style";
 import { NavState, PreviewImg, NavStates, NavPostData } from "../../../Recoil/Atoms/OptionAtoms";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { ReactComponent as Home } from "../../../Icons/home.svg";
-import { ReactComponent as Search } from "../../../Icons/search.svg";
-import { ReactComponent as Run } from "../../../Icons/run.svg";
-import { ReactComponent as Mypage } from "../../../Icons/mypage.svg";
+import { ReactComponent as Home } from "../../../Static/Icons/home.svg";
+import { ReactComponent as Search } from "../../../Static/Icons/search.svg";
+import { ReactComponent as Run } from "../../../Static/Icons/run.svg";
+import { ReactComponent as Mypage } from "../../../Static/Icons/mypage.svg";
 
 import { useUserProfileMutation } from "../../../Hooks/useProfile";
 import { instance } from "../../../Utils/Instance";

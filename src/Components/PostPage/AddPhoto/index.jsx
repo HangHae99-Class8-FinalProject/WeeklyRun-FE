@@ -7,7 +7,7 @@ import { instance } from "../../../Utils/Instance";
 import { postData } from "../../../Recoil/Atoms/PostData";
 import { useRecoilState } from "recoil";
 
-import { ReactComponent as PostCamera } from "../../../Icons/PostCamera.svg";
+import { ReactComponent as PostCamera } from "../../../Static/Icons/PostCamera.svg";
 
 const AddPhoto = ({ merge }) => {
   const [previewImages, setPreviewImages] = useState([]);
