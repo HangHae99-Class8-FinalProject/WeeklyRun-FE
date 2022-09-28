@@ -8,15 +8,5 @@
         "B1:2D:DD:E5:BB:D1:09:E1:7B:F1:A6:9F:8E:1A:B8:07:DA:C9:A2:1B:F7:BC:65:59:E5:AF:5B:5B:67:3B:5E:A3"
       ]
     }
-  },
-  {
-    "relation": ["delegate_permission/common.handle_all_urls"],
-    "target": {
-      "namespace": "android_app",
-      "package_name": "net.cloudfront.d1zv4kmpu2mgeb.twa",
-      "sha256_cert_fingerprints": [
-        "97:B7:2B:14:A4:27:5A:5F:B5:D2:C8:9F:2C:57:FE:0C:7A:A8:97:96:21:E4:82:E8:05:95:BD:7B:29:6E:CA:3D"
-      ]
-    }
   }
 ]
