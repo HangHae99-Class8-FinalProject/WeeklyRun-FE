@@ -116,7 +116,7 @@ const Progress = ({ goalData, done }) => {
               <StyleNextProgress>
                 <StyleSevenProgress>
                   <StyleSevenTitle>
-                    <StyleSevenGoal>한주간{goalData.getUserInfo.goal}km런닝</StyleSevenGoal>
+                    <StyleSevenGoal>이번 주 목표 :{goalData.getUserInfo.goal}km</StyleSevenGoal>
                     <StyleGoalDate>{goalDate}</StyleGoalDate>
                   </StyleSevenTitle>
                   <StyleSevenDate>
