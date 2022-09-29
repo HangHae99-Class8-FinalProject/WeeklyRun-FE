@@ -2,7 +2,7 @@ import styled from "styled-components";
 export const StyleFeedWrap = styled.div`
   width: 100%;
   box-sizing: border-box;
-  padding: 2.4rem 1.6rem 2rem;
+  padding: 0rem 1.6rem 2rem 1.6rem;
   align-items: flex-start;
   flex-direction: column;
   margin-bottom: 5rem;

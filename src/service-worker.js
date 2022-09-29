@@ -70,11 +70,3 @@ self.addEventListener("message", event => {
 });
 
 // Any other custom service worker logic can go here.
-
-self.addEventListener("fetch", e => {
-  e.respondWith(
-    caches.match(e.request).then(res => {
-      return res || fetch(e.request);
-    })
-  );
-});

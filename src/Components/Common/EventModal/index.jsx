@@ -4,7 +4,7 @@ import { instance } from "../../../Utils/Instance";
 import EventImage from "./eventPopup.jpeg";
 
 const googleForms =
-  "https://docs.google.com/forms/d/e/1FAIpQLSdZDs9en5KjtUB_eSl19kfMrvtTITl31Y57J7au95ZPUkZ2SQ/viewform?usp=sf_link";
+  "https://docs.google.com/forms/d/e/1FAIpQLSeWiKM8eSltDGdPzS3c0uQD91BbLAfJRzbUp1ODGnCQFRyHVA/viewform?usp=sf_link";
 
 const EventModal = () => {
   const [showEventModal, setShowEventModal] = useState(true);

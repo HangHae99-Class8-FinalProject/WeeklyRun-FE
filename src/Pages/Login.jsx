@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
+import Lottie from "lottie-react";
 
+import Runner from "../Static/Lottie/Runner.json";
 import { ReactComponent as KakaoLoginIcon } from "../Static/Icons/KakaoLoginIcon.svg";
 import { ReactComponent as NaverLoginIcon } from "../Static/Icons/NaverLoginIcon.svg";
 import { ReactComponent as Logo } from "../Static/Icons/LoginLogo.svg";
@@ -10,7 +12,7 @@ const KAKAO_LOGIN = "https://yunseong.shop/api/kakao/callback";
 const NAVER_LOGIN = "http://yunseong.shop/api/naver/callback";
 
 const Login = () => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   const deferredPrompt = useRef(null);
 
@@ -56,6 +58,7 @@ const Login = () => {
       <LoginLogo>
         <Logo />
       </LoginLogo>
+      <Lottie animationData={Runner} />
       <LoginLink>
         <a href={KAKAO_LOGIN}>
           <KakaoLoginIcon />
@@ -75,9 +78,8 @@ const LoginLogo = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  margin-top: 10rem;
   padding: 1.2rem 0rem 0rem;
-  height: 24.5rem;
+  height: 25.5rem;
   width: 100%;
   overflow: hidden;
 `;
@@ -91,5 +93,5 @@ const LoginLink = styled.div`
   margin: 0 auto;
   width: 100%;
   position: absolute;
-  bottom: 8.1rem;
+  bottom: 13.1rem;
 `;
