@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 
@@ -13,7 +13,7 @@ import { ReactComponent as SearchIcon } from "../Static/Icons/SearchIcon.svg";
 const Search = () => {
   const { state } = useLocation();
 
-  const [searchTag, onChangeSearchTag, setSearchTag] = useInput(state === "search" ? "" : state);
+  const [searchTag, onChangeSearchTag, setSearchTag] = useInput("");
   const [searhValue, setSearchValue] = useState("");
   const [showRelatedBar, setShowRelatedBar] = useState(false);
   const [selectedTab, setSelectedTab] = useState("태그");
@@ -42,6 +42,12 @@ const Search = () => {
     },
     [searchTag]
   );
+
+  useEffect(() => {
+    if (state) {
+      setSearchTag(state);
+    }
+  }, [state]);
 
   return (
     <Layout show={false}>

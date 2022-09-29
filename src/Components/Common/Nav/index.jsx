@@ -39,6 +39,7 @@ const Nav = () => {
     const formData = new FormData();
     const compressedFile = await imageCompression(file, options);
     formData.append("image", compressedFile);
+    formData.append("basicImage", false);
     postProfile(formData);
   };
 
@@ -136,7 +137,7 @@ const Nav = () => {
                 <p
                   onClick={() => {
                     setPreview(null);
-                    postProfile({ image: null });
+                    postProfile({ basicImage: true });
                   }}
                 >
                   기본이미지로변경하기

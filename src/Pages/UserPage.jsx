@@ -13,7 +13,6 @@ import { useState } from "react";
 import { instance } from "../Utils/Instance";
 
 const UserPage = () => {
-  const { nickname } = useParams();
   const { state } = useLocation();
   const [showEventModal, setShowEventModal] = useState(true);
   const accessToken = localStorage.getItem("userData");
@@ -28,7 +27,7 @@ const UserPage = () => {
   const { data: userData } = useGetUserData(userIds);
 
   useEffect(() => {
-    if (state?.userId === undefined) {
+    if (!state?.userId) {
       SetUserId(userId);
     }
   }, [state?.userId]);
