@@ -6,7 +6,7 @@ export const runData = atom({
     path: [],
     distance: 0,
     time: "",
-    speed: "",
+    pace: "",
     isFinish: false
   }
 });

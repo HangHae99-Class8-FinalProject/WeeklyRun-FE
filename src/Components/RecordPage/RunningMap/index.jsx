@@ -40,7 +40,7 @@ const RunningMap = ({ stopInterval, endRun }) => {
   const getDistanceQuery = useMutation(location => getDistance(location), {
     onSuccess: data => {
       if (data >= 0) {
-        setDistance(data);
+        setDistance(prev => prev + 30);
       }
     }
   });

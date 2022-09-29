@@ -64,6 +64,24 @@ const Record = () => {
     setEndRun(true);
   });
 
+  useEffect(() => {
+    if (!runLog.time) return;
+
+    async function getPace() {
+      const { data } = await instance.post("/api/user/endrunning", {
+        distance: runLog.distance,
+        time: totalTime
+      });
+      if (data?.sec) {
+        setPath(prev => ({
+          ...prev,
+          pace: data
+        }));
+      }
+    }
+    getPace();
+  }, [runLog.time]);
+
   const onFeed = async () => {
     if (runLog.isFinish) {
       if (goal) {

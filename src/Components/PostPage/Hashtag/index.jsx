@@ -75,7 +75,9 @@ const Hashtag = ({ merge, prevHashtag }) => {
 
 export default Hashtag;
 
-const HashTagWrap = styled.div``;
+const HashTagWrap = styled.div`
+  width: 100%;
+`;
 
 const InputWrap = styled.div`
   letter-spacing: 8rem;

@@ -17,7 +17,7 @@ export const StyleFeed = styled.div`
   flex-direction: column;
   display: flex;
   padding: 2rem 0px;
-  gap: 1.2rem;
+  gap: 0.5rem;
   border-bottom: 1px solid #e6e6e6;
   margin: 0 auto;
 `;
@@ -40,25 +40,27 @@ export const StyleFrofileImg = styled.img`
 `;
 
 export const StyleSpeed = styled.div`
-  position: absolute;
-  z-index: 999;
   display: flex;
   width: 100%;
   height: 100%;
-  padding-top: 90%;
-  & > div {
+  & div {
     width: 100%;
     display: flex;
     justify-content: space-between;
-
-    font-size: 3.6rem;
+    font-size: 2rem;
     font-family: "Anton";
-
     font-weight: 900;
     color: #1a1a1a;
     padding: 0 2%;
   }
+  & > div > div {
+    flex-direction: column;
+  }
+  & > div > div > div {
+    font-size: 1.6rem;
+  }
 `;
+
 export const StylePath = styled.div`
   width: 100%;
   height: 36rem;

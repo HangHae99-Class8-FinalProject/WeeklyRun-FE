@@ -16,7 +16,6 @@ import {
   StyleImg,
   StyleHashBox,
   StyleContent,
-  StyleHash,
   StyleComment,
   StyleTime
 } from "./style";
@@ -124,6 +123,22 @@ const PostBox = ({ posts, index }) => {
           )}
         </div>
       </StyleFrofileBox>
+      <StyleSpeed>
+        <div>
+          <div>
+            <div>거리</div>
+            {posts.distance}Km
+          </div>
+          <div>
+            <div>페이스</div>
+            {posts.pace}
+          </div>
+          <div>
+            <div>시간</div>
+            {divideTime(posts.time)}
+          </div>
+        </div>
+      </StyleSpeed>
       <StylePath>
         <Swiper
           pagination={{
@@ -132,12 +147,6 @@ const PostBox = ({ posts, index }) => {
           modules={[Pagination]}
         >
           <SwiperSlide>
-            <StyleSpeed>
-              <div>
-                <div>{posts.distance}Km</div>
-                <div>{divideTime(posts.time)}</div>
-              </div>
-            </StyleSpeed>
             <KakaoMap path={posts.path}></KakaoMap>
           </SwiperSlide>
           {posts.prevImage.map((img, index) => (

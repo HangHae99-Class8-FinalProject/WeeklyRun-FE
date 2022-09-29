@@ -29,13 +29,15 @@ const Post = () => {
 
   const addPosts = async () => {
     let formData = new FormData();
-    const { content, time, distance, path, hashtag, image, prevImage } = post;
+    const { content, time, distance, path, hashtag, image, prevImage, pace } = post;
+    const paceValue = `${pace.min}"${pace.sec}"`;
     const datas = {
       content,
       time,
       distance,
       path,
       hashtag,
+      pace: paceValue,
       prevImage
     };
     image.map(imageData => {
@@ -65,6 +67,7 @@ const Post = () => {
       distance: runLog.distance,
       path: runLog.path,
       time: Time,
+      pace: runLog.pace,
       isLoading: true
     }));
     setMerge(true);
