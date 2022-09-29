@@ -21,16 +21,15 @@ const Login = () => {
       e.preventDefault();
       deferredPrompt.current = e;
     });
-
     if (!deferredPrompt.current) {
       setVisible(false);
+      return;
     }
     setVisible(true);
   }, []);
 
   const installApp = () => {
     if (!deferredPrompt.current) return false;
-
     //홈 화면에 추가시키기
     deferredPrompt.current.prompt();
 
