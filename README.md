@@ -56,15 +56,16 @@
 <details>
   <summary>위치를 불러오는 함수와 시간 타이머 함수를 시작 버튼 ,정지 버튼 및 종료 버튼을 이용하여 제어할 수 있어야하며, 일정한 시간 간격으로 함수가 작동해야함</summary>
   <div markdown="1">
-   useInterval 커스텀 훅을 사용하여, callback 함수와 delay를 파라미터로 넘겨 delay가 null일 경우 함수가 중단됨<br/>
+
+   * useInterval 커스텀 훅을 사용하여, callback 함수와 delay를 파라미터로 넘겨 delay가 null일 경우 함수가 중단됨<br/>
    자세한 내용은 https://velog.io/@dae_eun2/React-useInterval 에서 확인 가능합니다.
   </div>
 </details>
 <details>
-  <summary>검색어 자동완성 기능 사용시 디바운싱 처리</summary>
+  <summary>검색어 입력시 불필요한 요청 및 상태변화가 일어남 </summary>
   <div markdown="1">
-  검색 인풋에 글씨가 입력될때마다 요청이 간다면 불필요한 요청이 생길뿐만아니라 과도한 요청이 발생할 수가 있음 <br />
-  debounce 훅을 만들어서 , value와 delay를 파라미터로 받으며, setTimeout을 이용하여 일정 시간 동안의 이벤트 발생을 무효화시켜
+    * 검색 인풋에 글씨가 입력될때마다 요청이 간다면 불필요한 요청이 생길뿐만아니라 과도한 요청이 발생할 수가 있음 <br />
+  debounce 훅을 만들어서 , value와 delay를 파라미터로 받으며, <br/>setTimeout을 이용하여 일정 시간 동안의 이벤트 발생을 무효화시켜
   change되는 value값의 시간 텀을 조정하여 사용
   </div>
 </details>
