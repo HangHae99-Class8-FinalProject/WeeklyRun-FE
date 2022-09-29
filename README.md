@@ -39,6 +39,7 @@
 </div>
 
 # 아키텍쳐
+<img width="1028" alt="스크린샷 2022-09-29 오후 9 50 36" src="https://user-images.githubusercontent.com/104764474/193035998-bd6c1c03-cffc-4539-ac81-96a4740da495.png">
 
 # 라이브러리
 ### 1. React Query
@@ -57,16 +58,30 @@
   <summary>위치를 불러오는 함수와 시간 타이머 함수를 시작 버튼 ,정지 버튼 및 종료 버튼을 이용하여 제어할 수 있어야하며, 일정한 시간 간격으로 함수가 작동해야함</summary>
   <div markdown="1">
 
-   * useInterval 커스텀 훅을 사용하여, callback 함수와 delay를 파라미터로 넘겨 delay가 null일 경우 함수가 중단됨<br/>
-   자세한 내용은 https://velog.io/@dae_eun2/React-useInterval 에서 확인 가능합니다.
+    useInterval 커스텀 훅을 사용하여, callback 함수와 delay를 파라미터로 넘겨 delay가 null일 경우 함수가 중단됨
+     자세한 내용은 https://velog.io/@dae_eun2/React-useInterval 에서 확인 가능합니다.
+    
   </div>
 </details>
 <details>
   <summary>검색어 입력시 불필요한 요청 및 상태변화가 일어남 </summary>
   <div markdown="1">
-    * 검색 인풋에 글씨가 입력될때마다 요청이 간다면 불필요한 요청이 생길뿐만아니라 과도한 요청이 발생할 수가 있음 <br />
-  debounce 훅을 만들어서 , value와 delay를 파라미터로 받으며, <br/>setTimeout을 이용하여 일정 시간 동안의 이벤트 발생을 무효화시켜
-  change되는 value값의 시간 텀을 조정하여 사용
+    
+      검색 인풋에 글씨가 입력될때마다 요청이 간다면 불필요한 요청이 생길뿐만아니라 과도한 요청이 발생할 수가 있음 
+      debounce 훅을 만들어서 , value와 delay를 파라미터로 받으며, <br/>setTimeout을 이용하여 일정 시간 동안의 이벤트 발생을 무효화시켜
+      change되는 value값의 시간 텀을 조정하여 사용
+    
+  </div>
+</details>
+<details>
+  <summary>게시글 수정에서 이미지 변경시 데이터 타입에 관한 에러 발생</summary>
+  <div markdown="1">
+    업로드 이미지를 blob타입으로 백엔드에 넘겨주는데, 기존 이미지는 string타입으로 url주소로 받음 <br />
+    기존이미지를 blob타입으로 변경 하여 줄 수가 없어, 기존 이미지를 수정하는것에대한 문제가 발생함 <br />
+    
+      해결방안 
+      백엔드에 prevImage와 newImage를 별도로 전송하여 백엔드측에서 newImage를 업로드 후, prevImage로 합치게끔 하여 문제 해결
+    
   </div>
 </details>
 
