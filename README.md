@@ -17,6 +17,11 @@
 * 좋아요 및 답글,대답글을 이용할 수 있습니다.
 ### 5. 검색하기
 * 해시태그 및 유저 이름을 자동완성 기능을 이용하여 검색할 수 있습니다.
+### 6. 답글페이지
+* 답글을 입력 할 수 있으며, 슬라이드를 이용하여 수정 및 삭제 가 가능합니다.
+### 7. 신고하기 기능
+* 부적절한 게시글 을 신고 하거나, 이용중에 발생한 문제에 관해 신고할 수 있는 별도의 페이지가 존재합니다.
+
 
 # 기술스택
 <div align="center">
@@ -33,6 +38,8 @@
    <img src="https://img.shields.io/badge/githubactions-181717?style=for-the-badge&logo=githubactions&logoColor=white"> 
 </div>
 
+# 아키텍쳐
+
 # 라이브러리
 ### 1. React Query
 * 서버데이터를 이용하여 다양한 기능을 추가시킬 수 있으며, 서버 데이터와 클라이언트 데이터를 분리하여 사용하기 위함
@@ -40,8 +47,25 @@
 ### 2. Recoil
 * 리덕스에 불필요하게 비대한 보일러 플레이터를 줄이고, 딱 필요한 만큼의 데이터만 공유하여 사용하기 위함
 
+# 트러블 슈팅
+<details>
+  <summary>위치를 불러오는 함수와 시간 타이머 함수를 시작 버튼 ,정지 버튼 및 종료 버튼을 이용하여 제어할 수 있어야하며, 일정한 시간 간격으로 함수가 작동해야함</summary>
+  <div markdown="1">
+   useInterval 커스텀 훅을 사용하여, callback 함수와 delay를 파라미터로 넘겨 delay가 null일 경우 함수가 중단됨<br/>
+   자세한 내용은 https://velog.io/@dae_eun2/React-useInterval 에서 확인 가능합니다.
+  </div>
+</details>
+<details>
+  <summary>검색어 자동완성 기능 사용시 디바운싱 처리</summary>
+  <div markdown="1">
+  검색 인풋에 글씨가 입력될때마다 요청이 간다면 불필요한 요청이 생길뿐만아니라 과도한 요청이 발생할 수가 있음 <br />
+  debounce 훅을 만들어서 , value와 delay를 파라미터로 받으며, setTimeout을 이용하여 일정 시간 동안의 이벤트 발생을 무효화시켜
+  change되는 value값의 시간 텀을 조정하여 사용
+  </div>
+</details>
 
-#팀원
+
+# 팀원
 |팀원|깃허브 주소| 역할 분담|
 |----|-----|------|
 |김대은| https://github.com/Dae-une   | 기록하기,게시글 작성,랭킹,신고하기,검색기능,댓글 페이지,깃헙액션,배포   |
