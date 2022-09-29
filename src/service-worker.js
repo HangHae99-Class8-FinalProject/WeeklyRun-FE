@@ -103,31 +103,8 @@ self.addEventListener("install", event => {
   );
 });
 
-const DYNAMIC_CACHE = "dynamic-cache";
-
-self.addEventListener("fetch", event => {
-  event.respondWith(
-    caches.match(event.request).then(response => {
-      if (response) {
-        return response;
-      }
-      let fetchRequest = event.request.clone();
-      return fetch(fetchRequest).then(response => {
-        if (!response) {
-          return response;
-        }
-        let responseToCache = response.clone();
-        caches.open(DYNAMIC_CACHE).then(cache => {
-          cache.put(event.request, responseToCache);
-        });
-        return response;
-      });
-    })
-  );
-});
-
 self.addEventListener("activate", event => {
-  let cacheWhiteList = [STATIC_CACHE, DYNAMIC_CACHE];
+  let cacheWhiteList = [STATIC_CACHE];
 
   event.waitUntil(
     caches.keys().then(cacheNames => {
