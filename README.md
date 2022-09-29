@@ -46,6 +46,11 @@
 * Optimistic UI , Invalidate 등을 활용하여 보다 나은 UX를 제공하기 위함
 ### 2. Recoil
 * 리덕스에 불필요하게 비대한 보일러 플레이터를 줄이고, 딱 필요한 만큼의 데이터만 공유하여 사용하기 위함
+### 3. @lodable/component
+*  Code Spitting 이란 ? <br/>
+앱의 규모가 커짐에 따라 Bundling 되어 제공되는 파일의 사이즈도 커지게 됨으로써 앱의 로딩 속도가 느려지게 된다.<br/>
+이러한 문제를 해결하기 위해 Code Splitting을 적용하여 <br/>
+현재 필요한 모듈만 로딩(lazy-load) 되도록 하여 성능을 향상시킬 수 있다.
 
 # 트러블 슈팅
 <details>
