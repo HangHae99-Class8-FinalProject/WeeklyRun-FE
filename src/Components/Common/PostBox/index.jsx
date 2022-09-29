@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback } from "react";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import { NavState, NavStates, NavPostData } from "../../../Recoil/Atoms/OptionAtoms";
