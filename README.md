@@ -32,3 +32,18 @@
    <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> 
    <img src="https://img.shields.io/badge/githubactions-181717?style=for-the-badge&logo=githubactions&logoColor=white"> 
 </div>
+
+# 라이브러리
+### 1. React Query
+* 서버데이터를 이용하여 다양한 기능을 추가시킬 수 있으며, 서버 데이터와 클라이언트 데이터를 분리하여 사용하기 위함
+* Optimistic UI , Invalidate 등을 활용하여 보다 나은 UX를 제공하기 위함
+### 2. Recoil
+* 리덕스에 불필요하게 비대한 보일러 플레이터를 줄이고, 딱 필요한 만큼의 데이터만 공유하여 사용하기 위함
+
+
+#팀원
+|팀원|깃허브 주소| 역할 분담|
+|----|-----|------|
+|김대은| https://github.com/Dae-une   | 기록하기,게시글 작성,랭킹,신고하기,검색기능,댓글 페이지,깃헙액션,배포   |
+|김도우|    | 유저페이지, 피드페이지 |
+|이승준|    | 로그인 페이지,댓글페이지 |
