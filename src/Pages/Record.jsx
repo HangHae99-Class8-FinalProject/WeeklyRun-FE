@@ -21,6 +21,7 @@ const Record = () => {
   const [noRecord, setNoRecord] = useState(false);
   const [goal, setGoal] = useState("");
   const [showGoalModal, setShowGoalModal] = useState(false);
+  const [showWarningModal, setShowWarningModal] = useState(false);
   const [path, setPath] = useRecoilState(runData);
   const runLog = useRecoilValue(runData);
 
@@ -66,7 +67,6 @@ const Record = () => {
 
   useEffect(() => {
     if (!runLog.time) return;
-
     async function getPace() {
       const { data } = await instance.post("/api/user/endrunning", {
         distance: runLog.distance,
@@ -77,6 +77,8 @@ const Record = () => {
           ...prev,
           pace: data
         }));
+      } else {
+        setShowWarningModal(true);
       }
     }
     getPace();
@@ -124,6 +126,10 @@ const Record = () => {
 
   const onClickGoalNo = useCallback(() => {
     setShowGoalModal(false);
+  }, []);
+
+  const onClickWarningYes = useCallback(() => {
+    navigate("/feed");
   }, []);
 
   useEffect(() => {
@@ -182,8 +188,16 @@ const Record = () => {
       {showGoalModal && (
         <Modal onClickYes={onClickGoalYes} onClickNo={onClickGoalNo}>
           <p>
-            목표 설정을 안하면 기록이 저장되지 않아요 <br />
-            목표를 설정하시겠어요?
+            목표 설정을 하지 않으면 기록 저장이 안돼요! <br />
+            지금 목표를 설정하시겠어요?
+          </p>
+        </Modal>
+      )}
+      {showWarningModal && (
+        <Modal onClickYes={onClickWarningYes}>
+          <p>
+            비 정상적인 속도로 인하여 <br />
+            기록이 불가능합니다.
           </p>
         </Modal>
       )}
