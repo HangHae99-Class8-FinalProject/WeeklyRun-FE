@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { instance } from "../../../Utils/Instance";
-import EventImage from "./eventPopup.jpeg";
+import EventImage from "./eventPopup.png";
 
 const googleForms =
   "https://docs.google.com/forms/d/e/1FAIpQLSeWiKM8eSltDGdPzS3c0uQD91BbLAfJRzbUp1ODGnCQFRyHVA/viewform?usp=sf_link";
@@ -49,6 +49,7 @@ const ModalBackground = styled.div`
   height: 100vh;
   z-index: 100;
   background-color: rgba(0, 0, 0, 0.6);
+  overflow: hidden;
 `;
 
 const EventModalWrap = styled.div`

@@ -9,6 +9,7 @@ export const useUserProfileMutation = () => {
   return useMutation(userProfile, {
     onSuccess: data => {
       queryClient.invalidateQueries("userData");
+      queryClient.invalidateQueries(["user"]);
     },
     onError: error => {
       // mutation 이 에러가 났을 경우 error를 받을 수 있다.
