@@ -77,6 +77,7 @@ const Record = () => {
           ...prev,
           pace: data
         }));
+        setShowWarningModal(false);
       } else {
         setShowWarningModal(true);
       }
@@ -129,6 +130,7 @@ const Record = () => {
   }, []);
 
   const onClickWarningYes = useCallback(() => {
+    setShowWarningModal(false);
     navigate("/feed");
   }, []);
 
@@ -196,7 +198,8 @@ const Record = () => {
       {showWarningModal && (
         <Modal onClickYes={onClickWarningYes}>
           <p>
-            비 정상적인 속도로 인하여 <br />
+            비 정상적인 속도로 감지되어
+            <br />
             기록이 불가능합니다.
           </p>
         </Modal>
@@ -215,7 +218,7 @@ const StartButton = styled.div`
   justify-content: center;
   align-items: center;
   padding: 1rem 5rem;
-  div {
+  p {
     font-family: "Anton";
     font-size: 4.6rem;
     line-height: 5.5rem;
