@@ -20,10 +20,8 @@ const Login = () => {
     window.addEventListener("beforeinstallprompt", e => {
       e.preventDefault();
       deferredPrompt.current = e;
-    });
-    if (deferredPrompt.current) {
       setVisible(true);
-    }
+    });
   }, []);
 
   const installApp = () => {
@@ -35,11 +33,13 @@ const Login = () => {
       if (choice.outcome === "accepted") {
         setVisible(false);
       }
+      deferredPrompt.current = null;
     });
   };
 
   const onClickNo = () => {
     setVisible(false);
+    deferredPrompt.current = null;
   };
 
   return (
