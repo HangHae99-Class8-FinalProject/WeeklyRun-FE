@@ -35,13 +35,11 @@ const Login = () => {
       if (choice.outcome === "accepted") {
         setVisible(false);
       }
-      deferredPrompt.current = null;
     });
   };
 
   const onClickNo = () => {
     setVisible(false);
-    deferredPrompt.current = null;
   };
 
   return (
