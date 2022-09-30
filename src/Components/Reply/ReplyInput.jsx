@@ -24,16 +24,16 @@ const ReplyInput = () => {
     if (inputRef.current !== null) inputRef.current.focus();
   }, []);
 
-  useLayoutEffect(() => {
-    const detecMobileKeyboard = () => {
-      if (isAndroid) {
-        formRef.current.scrollIntoView({ blok: "end" });
-      }
-    };
-    window.addEventListener("resize", detecMobileKeyboard);
+  // useLayoutEffect(() => {
+  //   const detecMobileKeyboard = () => {
+  //     if (isAndroid) {
+  //       formRef.current.scrollIntoView({ blok: "end" });
+  //     }
+  //   };
+  //   window.addEventListener("resize", detecMobileKeyboard);
 
-    return () => window.removeEventListener("resize", detecMobileKeyboard);
-  }, []);
+  //   return () => window.removeEventListener("resize", detecMobileKeyboard);
+  // }, []);
 
   //댓글 작성
   const addReplyData = useMutation(reply => addReply(reply), {
