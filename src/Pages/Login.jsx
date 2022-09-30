@@ -20,6 +20,7 @@ const Login = () => {
     window.addEventListener("beforeinstallprompt", e => {
       e.preventDefault();
       deferredPrompt.current = e;
+      console.log(e);
     });
     if (!deferredPrompt.current) {
       setVisible(false);
@@ -28,6 +29,7 @@ const Login = () => {
     }
   }, [deferredPrompt]);
 
+  console.log(deferredPrompt.current);
   const installApp = () => {
     if (!deferredPrompt.current) return false;
     //홈 화면에 추가시키기
