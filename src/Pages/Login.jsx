@@ -23,11 +23,12 @@ const Login = () => {
     });
     if (!deferredPrompt.current) {
       setVisible(false);
-      return;
+    } else {
+      setVisible(true);
     }
-    setVisible(true);
-  }, []);
+  }, [deferredPrompt]);
 
+  console.log(deferredPrompt.current);
   const installApp = () => {
     if (!deferredPrompt.current) return false;
     //홈 화면에 추가시키기
