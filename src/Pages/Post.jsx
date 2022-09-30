@@ -12,7 +12,7 @@ import { instance } from "../Utils/Instance";
 import Modal from "../Components/Common/Modal/Modal";
 import Loading from "../Components/Common/Loading/Loading";
 
-import { ReactComponent as BackIcon } from "../Icons/BackIcon.svg";
+import { ReactComponent as BackIcon } from "../Static/Icons/BackIcon.svg";
 
 const Post = () => {
   const [merge, setMerge] = useState(false);
@@ -28,11 +28,27 @@ const Post = () => {
   const Time = runLog.time;
 
   const addPosts = async () => {
+    let formData = new FormData();
+    const { content, time, distance, path, hashtag, image, prevImage, pace } = post;
+    const paceValue = `${pace.min}"${pace.sec}"`;
+    const datas = {
+      content,
+      time,
+      distance,
+      path,
+      hashtag,
+      pace: paceValue,
+      prevImage
+    };
+    image.map(imageData => {
+      formData.append("image", imageData);
+    });
+    formData.append("datas", JSON.stringify(datas));
     if (!postId) {
-      const { data } = await instance.post("/api/post", post);
+      const { data } = await instance.post("/api/post", formData);
       return data;
     } else {
-      const { data } = await instance.put(`/api/post/${postId}`, post);
+      const { data } = await instance.put(`/api/post/${postId}`, formData);
       return data;
     }
   };
@@ -51,6 +67,7 @@ const Post = () => {
       distance: runLog.distance,
       path: runLog.path,
       time: Time,
+      pace: runLog.pace,
       isLoading: true
     }));
     setMerge(true);
@@ -88,7 +105,7 @@ const Post = () => {
         <PostMap>
           <KakaoMap path={runLog.path} />
         </PostMap>
-        <AddPhoto merge={merge} prevImg={runLog.image} />
+        <AddPhoto merge={merge} />
         <AddContent merge={merge} prevContent={runLog.content} />
         <Hashtag merge={merge} prevHashtag={runLog.hashtag} />
       </PostBody>
@@ -105,9 +122,6 @@ export default Post;
 
 const PostHeader = styled.div`
   display: flex;
-  align-items: flex-start;
-  padding: 0rem;
-
   height: 4.3rem;
 `;
 
@@ -117,11 +131,6 @@ const HeaderItems = styled.div`
   padding: 1rem 1.6rem;
   width: 100%;
   border-bottom: 0.1rem solid #e6e6e6;
-  & div {
-    font-family: "Noto Sans CJK KR";
-    font-size: 1.6rem;
-    line-height: 2.3rem;
-  }
   & > div:last-child {
     color: #f03800;
   }
@@ -132,9 +141,9 @@ const PostBody = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 0rem;
+  padding: 2rem 2rem 0rem;
 `;
 
 const PostMap = styled.div`
-  padding: 2rem 2rem 0rem;
-  width: 35.2rem;
+  width: 100%;
 `;

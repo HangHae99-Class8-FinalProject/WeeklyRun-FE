@@ -2,7 +2,7 @@ import ProfileUpload from "../Components/Signup/profileUpload";
 
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { ReactComponent as Logo } from "../Icons/LoginLogo.svg";
+import { ReactComponent as Logo } from "../Static/Icons/LoginLogo.svg";
 
 const SignUp = () => {
   const location = useLocation();

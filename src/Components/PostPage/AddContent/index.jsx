@@ -34,7 +34,7 @@ const AddContent = ({ merge, prevContent }) => {
 export default AddContent;
 
 const ContentBox = styled.div`
-  padding: 2rem 1.6rem;
+  width: 98%;
   height: 22rem;
 `;
 
@@ -43,7 +43,7 @@ const Write = styled.textarea`
   border-radius: 0.4rem;
   padding: 1rem 0 1rem 1rem;
   gap: 1rem;
-  width: 34.3rem;
+  width: 100%;
   height: 18rem;
   &:focus {
     outline: none;

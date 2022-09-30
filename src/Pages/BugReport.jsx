@@ -2,7 +2,7 @@ import React, { useCallback, useLayoutEffect, useRef, useState, useEffect } from
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-import { ReactComponent as BackIcon } from "../Icons/BackIcon.svg";
+import { ReactComponent as BackIcon } from "../Static/Icons/BackIcon.svg";
 import useInput from "../Hooks/useInput";
 import { instance } from "../Utils/Instance";
 import Loading from "../Components/Common/Loading/Loading";

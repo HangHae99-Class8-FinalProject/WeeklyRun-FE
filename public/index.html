@@ -46,10 +46,27 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="apple-mobile-web-app-title" content="위클리 런" />
 
+    <link rel="assetlinks.json file" href="%PUBLIC_URL%/.well-known/assetlinks.json" />
+
     <script
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=%REACT_APP_KAKAOMAP_API_KEY%&libraries=services,clusterer"
     ></script>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/service-worker.js").then(
+          function (registration) {
+            console.log("Service worker registration succeeded:", registration);
+          },
+          function (error) {
+            console.log("Service worker registration failed:", error);
+          }
+        );
+      } else {
+        console.log("Service workers are not supported.");
+      }
+    </script>
     <title>위클리 런</title>
   </head>
   <body>

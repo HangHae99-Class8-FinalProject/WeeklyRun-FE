@@ -9,9 +9,9 @@ import { runData } from "../Recoil/Atoms/RunData";
 import { useNavigate } from "react-router-dom";
 import Modal from "../Components/Common/Modal/Modal";
 
-import { ReactComponent as StopIcon } from "../Icons/StopIcon.svg";
-import { ReactComponent as EndIcon } from "../Icons/EndIcon.svg";
-import { ReactComponent as StartIcon } from "../Icons/StartIcon.svg";
+import { ReactComponent as StopIcon } from "../Static/Icons/StopIcon.svg";
+import { ReactComponent as EndIcon } from "../Static/Icons/EndIcon.svg";
+import { ReactComponent as StartIcon } from "../Static/Icons/StartIcon.svg";
 
 const Record = () => {
   const [stopInterval, setStopInterval] = useState(true);
@@ -21,6 +21,7 @@ const Record = () => {
   const [noRecord, setNoRecord] = useState(false);
   const [goal, setGoal] = useState("");
   const [showGoalModal, setShowGoalModal] = useState(false);
+  const [showWarningModal, setShowWarningModal] = useState(false);
   const [path, setPath] = useRecoilState(runData);
   const runLog = useRecoilValue(runData);
 
@@ -56,12 +57,33 @@ const Record = () => {
   }, []);
 
   const onClickEnd = useCallback(async () => {
-    setEndRun(true);
     setStopInterval(true);
+
     if (Number(runLog.distance / 1000).toFixed(1) <= 0) {
       setNoRecord(true);
     }
+    setEndRun(true);
   });
+
+  useEffect(() => {
+    if (!runLog.time) return;
+    async function getPace() {
+      const { data } = await instance.post("/api/user/endrunning", {
+        distance: runLog.distance,
+        time: totalTime
+      });
+      if (data?.sec) {
+        setPath(prev => ({
+          ...prev,
+          pace: data
+        }));
+        setShowWarningModal(false);
+      } else {
+        setShowWarningModal(true);
+      }
+    }
+    getPace();
+  }, [runLog.time]);
 
   const onFeed = async () => {
     if (runLog.isFinish) {
@@ -105,6 +127,11 @@ const Record = () => {
 
   const onClickGoalNo = useCallback(() => {
     setShowGoalModal(false);
+  }, []);
+
+  const onClickWarningYes = useCallback(() => {
+    setShowWarningModal(false);
+    navigate("/feed");
   }, []);
 
   useEffect(() => {
@@ -163,8 +190,17 @@ const Record = () => {
       {showGoalModal && (
         <Modal onClickYes={onClickGoalYes} onClickNo={onClickGoalNo}>
           <p>
-            목표 설정을 안하면 기록이 저장되지 않아요 <br />
-            목표를 설정하시겠어요?
+            목표 설정을 하지 않으면 기록 저장이 안돼요! <br />
+            지금 목표를 설정하시겠어요?
+          </p>
+        </Modal>
+      )}
+      {showWarningModal && (
+        <Modal onClickYes={onClickWarningYes}>
+          <p>
+            비 정상적인 속도로 감지되어
+            <br />
+            기록이 불가능합니다.
           </p>
         </Modal>
       )}

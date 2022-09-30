@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ReactComponent as BackIcon } from "../../Icons/BackIcon.svg";
+import { ReactComponent as BackIcon } from "../../Static/Icons/BackIcon.svg";
 
 import PostItem from "./postItem";
 import ReplyComponent from "./replyComponent";
@@ -35,6 +35,7 @@ const ReplyCom = () => {
 export default ReplyCom;
 
 const Body = styled.div`
+  width: 100%;
   overflow-x: hidden;
 `;
 const HeaderWrap = styled.div`

@@ -1,14 +1,14 @@
 name: development deployment
 
 on:
+  push:
+    branches: [develop]
   pull_request:
-    branches:
-      - main
+    branches: [develop]
     types: [closed]
 
 jobs:
   deploy:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     strategy:
       matrix:

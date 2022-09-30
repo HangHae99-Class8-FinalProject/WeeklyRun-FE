@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { ReactComponent as BackIcon } from "../../../Icons/BackIcon.svg";
+import { ReactComponent as BackIcon } from "../../../Static/Icons/BackIcon.svg";
 import { useNavigate } from "react-router-dom";
 
 const RankHeader = () => {

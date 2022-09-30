@@ -10,34 +10,37 @@ import PostBox from "../../Common/PostBox";
 const SearchedHashTag = ({ searhValue }) => {
   const [ref, inView] = useInView();
   const [tap, setTap] = useState("최신");
+  const [search, setSearch] = useState(searhValue);
 
   const { state } = useLocation();
-  if (state !== "search" && searhValue === "") {
-    searhValue = state;
-  }
+  useEffect(() => {
+    if (state && state !== "search") {
+      setSearch(state);
+    }
+  }, [state]);
 
   const getSearchHashTagOrder = async pageParam => {
-    const { data } = await instance.get(`/api/post/search/popular/${pageParam}?hashtag=${searhValue}`);
+    const { data } = await instance.get(`/api/post/search/popular/${pageParam}?hashtag=${search}`);
     return data;
   };
 
   const getSearchHashTagNewest = async pageParam => {
-    const { data } = await instance.get(`/api/post/search/new/${pageParam}?hashtag=${searhValue}`);
+    const { data } = await instance.get(`/api/post/search/new/${pageParam}?hashtag=${search}`);
     return data;
   };
 
   const { data, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
-    ["searchHashtag", searhValue],
+    ["searchHashtag", search],
     ({ pageParam = 1 }) => (tap === "인기" ? getSearchHashTagOrder(pageParam) : getSearchHashTagNewest(pageParam)),
     {
-      enabled: !!searhValue,
+      enabled: !!search,
       getNextPageParam: lastPage => (!lastPage.isLast ? lastPage.nextPage : undefined)
     }
   );
 
   useEffect(() => {
-    if (inView && searhValue) fetchNextPage();
-  }, [inView, searhValue]);
+    if (inView && search) fetchNextPage();
+  }, [inView, search]);
 
   return (
     <Body>

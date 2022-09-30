@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback } from "react";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import { NavState, NavStates, NavPostData } from "../../../Recoil/Atoms/OptionAtoms";
@@ -16,15 +16,14 @@ import {
   StyleImg,
   StyleHashBox,
   StyleContent,
-  StyleHash,
   StyleComment,
   StyleTime
 } from "./style";
 
-import { ReactComponent as Heart } from "../../../Icons/heart.svg";
-import { ReactComponent as CommentIcon } from "../../../Icons/comment.svg";
+import { ReactComponent as Heart } from "../../../Static/Icons/heart.svg";
+import { ReactComponent as CommentIcon } from "../../../Static/Icons/comment.svg";
 
-import { ReactComponent as Profile } from "../../../Icons/myPageProfile.svg";
+import { ReactComponent as Profile } from "../../../Static/Icons/myPageProfile.svg";
 
 import displayedAt from "../../../Utils/displayAt";
 import KakaoMap from "../../Common/KakaoMap/index";
@@ -124,6 +123,7 @@ const PostBox = ({ posts, index }) => {
           )}
         </div>
       </StyleFrofileBox>
+
       <StylePath>
         <Swiper
           pagination={{
@@ -134,13 +134,23 @@ const PostBox = ({ posts, index }) => {
           <SwiperSlide>
             <StyleSpeed>
               <div>
-                <div>{posts.distance}Km</div>
-                <div>{divideTime(posts.time)}</div>
+                <div>
+                  <div>거리</div>
+                  {posts.distance}Km
+                </div>
+                <div>
+                  <div>페이스</div>
+                  {posts.pace}
+                </div>
+                <div>
+                  <div>시간</div>
+                  {divideTime(posts.time)}
+                </div>
               </div>
             </StyleSpeed>
             <KakaoMap path={posts.path}></KakaoMap>
           </SwiperSlide>
-          {posts.image.map((img, index) => (
+          {posts.prevImage.map((img, index) => (
             <SwiperSlide key={index}>
               <StyleImg src={img} alt="img"></StyleImg>
             </SwiperSlide>
@@ -183,9 +193,9 @@ const PostBox = ({ posts, index }) => {
         <StyleContent>{posts?.content}</StyleContent>
         <StyleHashBox>
           {posts?.hashtag.map((hash, idx) => (
-            <StyleHash key={idx} onClick={() => linkToSearch(hash)}>
+            <div key={idx} onClick={() => linkToSearch(hash)}>
               <span>#{hash}</span>
-            </StyleHash>
+            </div>
           ))}
         </StyleHashBox>
         <StyleGood>

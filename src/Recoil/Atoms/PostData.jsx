@@ -8,9 +8,9 @@ export const postData = atom({
     distance: "",
     image: [],
     hashtag: [],
-    time: {},
-    userId: 2,
-    nickname: "test",
+    time: "",
+    prevImage: "",
+    pace: "",
     isLoading: false
   }
 });

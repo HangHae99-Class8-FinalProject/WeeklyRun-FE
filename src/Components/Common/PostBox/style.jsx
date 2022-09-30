@@ -16,8 +16,8 @@ export const StyleFeed = styled.div`
   width: 100%;
   flex-direction: column;
   display: flex;
+  gap: 1rem;
   padding: 2rem 0px;
-  gap: 1.2rem;
   border-bottom: 1px solid #e6e6e6;
   margin: 0 auto;
 `;
@@ -29,7 +29,7 @@ export const StyleFrofileBox = styled.div`
 export const StyleFrofile = styled.div`
   flex-direction: row;
   display: flex;
-  gap: 1rem;
+  gap: 0.6rem;
   justify-content: center;
   align-items: center;
 `;
@@ -40,27 +40,34 @@ export const StyleFrofileImg = styled.img`
 `;
 
 export const StyleSpeed = styled.div`
-  position: absolute;
-  z-index: 999;
   display: flex;
+  position: absolute;
   width: 100%;
-  top: 70%;
-  & > div {
+  height: 100%;
+  padding: 0 1rem;
+  z-index: 100;
+  & div {
     width: 100%;
     display: flex;
-    justify-content: space-between;
-
-    font-size: 3.6rem;
+    font-size: 2.2rem;
     font-family: "Anton";
-
     font-weight: 900;
     color: #1a1a1a;
-    padding: 0 2%;
+    text-align: start;
+  }
+  & > div > div {
+    flex-direction: column;
+  }
+  & > div > div > div {
+    display: flex;
+    justify-content: start;
+    font-size: 1.8rem;
   }
 `;
+
 export const StylePath = styled.div`
   width: 100%;
-  height: 18rem;
+  height: 36rem;
 `;
 export const StyleContentBox = styled.div`
   display: flex;
@@ -103,12 +110,20 @@ export const StyleContent = styled.div`
   padding: 0px 0.2rem 1rem;
 `;
 export const StyleHashBox = styled.div`
+  font-size: 1.2rem;
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 0.5rem;
-  height: 2.2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+  & div {
+    display: flex;
+    padding: 0.5rem 1rem;
+    background-color: #e6e6e6;
+    border-radius: 10px;
+    align-items: center;
+  }
+  & span {
+    margin-right: 1rem;
+  }
 `;
 export const StyleHash = styled.div`
   display: flex;

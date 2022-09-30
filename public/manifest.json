@@ -6,7 +6,7 @@
       "src": "./Icons/apple-touch-icon-57x57.png",
       "sizes": "57x57",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "maskable"
     },
     {
       "src": "./Icons/apple-touch-icon-60x60.png",
@@ -46,16 +46,12 @@
     {
       "src": "./Icons/apple-touch-icon-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
-    },
-    {
-      "src": "./Icons/favicon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "start_url": "/",
-  "display": "fullscreen",
+  "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff",
   "orientation": "portrait",

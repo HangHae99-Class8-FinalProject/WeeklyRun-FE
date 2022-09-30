@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleModalBox, StyleModal, StyleInput, StyleButton } from "./style";
+import { StyleModalBox, StyleModal, StyleInput } from "./style";
 import { useGoal } from "../../../Hooks/useGoal";
 import { usePutGoal } from "../../../Hooks/usePutGoal";
 import { useRecoilState } from "recoil";
@@ -34,43 +34,40 @@ const Modal = ({ done }) => {
   return (
     <StyleModalBox>
       <StyleModal>
+        <p>일주일 간의 목표를 설정해주세요!</p>
+        <StyleInput
+          name="goal"
+          onChange={onChangeHandeler}
+          type="number"
+          min="0"
+          value={goal.goal}
+          placeholder="0km"
+        ></StyleInput>
         <div>
-          <label>일주일 간의 목표를 설정해주세요!</label>
-          <StyleInput
-            name="goal"
-            onChange={onChangeHandeler}
-            type="number"
-            min="0"
-            value={goal.goal}
-            placeholder="0km"
-          ></StyleInput>
-
-          <StyleButton>
-            <span
+          <button
+            onClick={() => {
+              setModal(false);
+            }}
+          >
+            취소
+          </button>
+          {done ? (
+            <button
               onClick={() => {
-                setModal(false);
+                onPutHandeler();
               }}
             >
-              취소
-            </span>
-            {done ? (
-              <span
-                onClick={() => {
-                  onPutHandeler();
-                }}
-              >
-                수정
-              </span>
-            ) : (
-              <span
-                onClick={() => {
-                  onSubmitHandeler();
-                }}
-              >
-                등록
-              </span>
-            )}
-          </StyleButton>
+              수정
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                onSubmitHandeler();
+              }}
+            >
+              설정
+            </button>
+          )}
         </div>
       </StyleModal>
     </StyleModalBox>

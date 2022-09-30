@@ -1,7 +1,7 @@
 import React from "react";
 import { isMobile } from "react-device-detect";
 import styled from "styled-components";
-import { ReactComponent as Logo } from "./Icons/LoginLogo.svg";
+import { ReactComponent as Logo } from "./Static/Icons/LoginLogo.svg";
 
 const Responsive = ({ children }) => {
   return (

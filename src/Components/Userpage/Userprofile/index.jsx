@@ -5,11 +5,11 @@ import { StyleUserWrap, StyleUser, StyleHeader, StyleUsrBox, RankLink, UserTitle
 import { useRecoilState } from "recoil";
 import { NavState, NavStates } from "../../../Recoil/Atoms/OptionAtoms";
 import { useParams } from "react-router-dom";
-import { ReactComponent as Option } from "../../../Icons/option.svg";
+import { ReactComponent as Option } from "../../../Static/Icons/option.svg";
 
-import { ReactComponent as Profile } from "../../../Icons/myPageProfile.svg";
+import { ReactComponent as Profile } from "../../../Static/Icons/myPageProfile.svg";
 
-import TrophyIcon from "../../../Icons/trophy.png";
+import TrophyIcon from "../../../Static/Icons/trophy.png";
 
 const Userprofile = ({ userNickname, userData }) => {
   const { nickname } = useParams();

@@ -5,9 +5,16 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { RecoilRoot } from "recoil";
 import GlobalStyle from "./GlobalStyle";
 import Responsive from "./Responsive";
-import "./Font/Fonts.css";
+import "./Static/Font/Fonts.css";
 
 const queryClient = new QueryClient();
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("/service-worker.js")
+    .then(reg => console.log("service worker registered", reg))
+    .catch(err => console.log("service worker not registered", err));
+}
 
 function App() {
   return (
