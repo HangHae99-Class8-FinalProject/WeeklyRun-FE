@@ -132,6 +132,7 @@ const ReplyInput = () => {
           <div>
             <input ref={inputRef} value={replyValue} onChange={onChangeReplyValue} />
             <span onClick={onCloseInput}>&times;</span>
+            <span onClick={handleAddreply}>완료</span>
           </div>
         </InputWrap>
       </form>
@@ -143,7 +144,7 @@ export default ReplyInput;
 
 const InputWrap = styled.div`
   position: fixed;
-  bottom: 7rem;
+  bottom: ${({ isAndroid }) => (isAndroid ? "45%" : "7rem")};
   background: #353434;
   width: 100%;
   height: 5.4rem;
@@ -169,6 +170,10 @@ const InputWrap = styled.div`
     text-align: center;
     font-size: 2.6rem;
     line-height: 2.9rem;
+  }
+  & span:last-child {
+    line-height: 3.3rem;
+    font-size: 2rem;
   }
   @media only screen and (min-width: 880px) {
     max-width: 40rem;

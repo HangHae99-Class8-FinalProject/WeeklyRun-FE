@@ -78,6 +78,8 @@ const staticCache = [
   "../src/Static/Font/NotoSansKR-Regular.otf",
   "../src/Static/Font/Font.css",
   "../src/Static/Lottie/LoadingLottie.json",
+  "../src/Static/Lottie/leftArrow.json",
+  "../src/Static/Lottie/RightArrow.json",
   "../src/Static/Icons/BackIcon.svg",
   "../src/Static/Icons/cancel_Icon.svg",
   "../src/Static/Icons/commnet.svg",

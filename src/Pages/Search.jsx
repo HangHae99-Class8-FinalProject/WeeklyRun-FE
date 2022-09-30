@@ -44,7 +44,7 @@ const Search = () => {
   );
 
   useEffect(() => {
-    if (state) {
+    if (state && state !== "search") {
       setSearchTag(state);
     }
   }, [state]);

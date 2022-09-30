@@ -11,10 +11,14 @@ import { ReactComponent as Profile } from "../../Static/Icons/myPageProfile.svg"
 import { useRecoilState } from "recoil";
 import { replyState } from "../../Recoil/Atoms/ReplyAtoms";
 import Modal from "../Common/Modal/Modal";
+import Lottie from "lottie-react";
+import LeftArrow from "../../Static/Lottie/leftArrow.json";
+import RightArrow from "../../Static/Lottie/RightArrow.json";
 
 function RecommentItem({ data }) {
   const [inputState, setInputState] = useRecoilState(replyState);
   const [showModal, setShowModal] = useState(false);
+  const [doneSlide, setDoneSlide] = useState(false);
   const queryClient = useQueryClient();
 
   //대댓글 삭제
@@ -59,10 +63,12 @@ function RecommentItem({ data }) {
     let totalX = e.changedTouches[0].pageX - firstTouchX;
     if (200 > totalX || 400 > totalX > 300) {
       slideRef.current.style.transform = "translateX(-13.3rem)";
+      setDoneSlide(true);
       return;
     }
     if ((totalX < 270 && totalX > 200) || totalX > 400) {
       slideRef.current.style.transform = "translateX(0%)";
+      setDoneSlide(false);
     }
   };
 
@@ -89,14 +95,19 @@ function RecommentItem({ data }) {
           </RecommentBody>
         </RecommentBox>
         {data.nickname === userData.nickname && (
-          <ButtonWrap>
-            <button onClick={onShowEditInput}>
-              <ReplyUpdate />
-            </button>
-            <button onClick={onShowModal}>
-              <ReplyDelete />
-            </button>
-          </ButtonWrap>
+          <>
+            <LottieWrap>
+              {!doneSlide ? <Lottie animationData={LeftArrow} /> : <Lottie animationData={RightArrow} />}
+            </LottieWrap>
+            <ButtonWrap>
+              <button onClick={onShowEditInput}>
+                <ReplyUpdate />
+              </button>
+              <button onClick={onShowModal}>
+                <ReplyDelete />
+              </button>
+            </ButtonWrap>
+          </>
         )}
       </Body>
       {showModal && (
@@ -137,7 +148,7 @@ const RecommentBox = styled.div`
   display: flex;
   padding: 1.5rem 1.6rem;
   gap: 0.8rem;
-  min-width: 81.6vw;
+  min-width: 66vw;
   & img {
     width: 4rem;
     height: 4rem;
@@ -152,4 +163,8 @@ const RecommentBody = styled.div`
 const RecommentFooter = styled.div`
   color: #999999;
   margin-top: 1rem;
+`;
+
+const LottieWrap = styled.div`
+  min-width: 6rem;
 `;

@@ -13,9 +13,8 @@ const SearchedHashTag = ({ searhValue }) => {
   const [search, setSearch] = useState(searhValue);
 
   const { state } = useLocation();
-
   useEffect(() => {
-    if (state) {
+    if (state && state !== "search") {
       setSearch(state);
     }
   }, [state]);

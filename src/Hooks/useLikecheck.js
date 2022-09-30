@@ -9,6 +9,7 @@ export const useLikeCheck = () => {
     onSuccess: data => {
       queryClient.invalidateQueries("posts");
       queryClient.invalidateQueries("like");
+      queryClient.invalidateQueries(["user"]);
       queryClient.invalidateQueries(["searchHashtag"]);
     },
     onError: error => {

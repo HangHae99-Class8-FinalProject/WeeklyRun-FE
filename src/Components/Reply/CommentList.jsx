@@ -12,11 +12,15 @@ import { ReactComponent as Profile } from "../../Static/Icons/myPageProfile.svg"
 import { useRecoilState } from "recoil";
 import { replyState } from "../../Recoil/Atoms/ReplyAtoms";
 import Modal from "../Common/Modal/Modal";
+import Lottie from "lottie-react";
+import LeftArrow from "../../Static/Lottie/leftArrow.json";
+import RightArrow from "../../Static/Lottie/RightArrow.json";
 
 const CommentList = ({ reply }) => {
   const [showReply, setShowReply] = useState(false);
   const [inputState, setInpuState] = useRecoilState(replyState);
   const [showModal, setShowModal] = useState(false);
+  const [doneSlide, setDoneSlide] = useState(false);
 
   const userData = JSON.parse(window.localStorage.getItem("userData"));
 
@@ -79,22 +83,24 @@ const CommentList = ({ reply }) => {
     let totalX = firstTouchX - e.changedTouches[0].pageX;
 
     if (totalX > 80) {
-      slideRef.current.style.transform = "translateX(-13rem)";
-
+      slideRef.current.style.transform = "translateX(-14rem)";
+      setDoneSlide(true);
       return;
     }
     if (totalX < -10) {
       slideRef.current.style.transform = "translateX(0%)";
-
+      setDoneSlide(false);
       return;
     }
   };
   const onShowModal = useCallback(() => {
     slideRef.current.style.transform = "translateX(0%)";
+    setDoneSlide(false);
     setShowModal(true);
   }, []);
 
   const onCloseModal = useCallback(() => {
+    setDoneSlide(false);
     setShowModal(false);
   }, []);
 
@@ -118,8 +124,12 @@ const CommentList = ({ reply }) => {
             </CommentFooter>
           </CommentBody>
         </CommentWrap>
+
         {reply.nickname === userData.nickname && (
           <>
+            <LottieWrap>
+              {!doneSlide ? <Lottie animationData={LeftArrow} /> : <Lottie animationData={RightArrow} />}
+            </LottieWrap>
             <ButtonWrap>
               <button onClick={onShowInputEdit}>
                 <ReplyUpdate />
@@ -162,7 +172,7 @@ const CommentWrap = styled.div`
   font-size: 1rem;
   display: flex;
   gap: 0.8rem;
-  min-width: 94vw;
+  min-width: 80vw;
   & img {
     width: 4rem;
     height: 4rem;
@@ -186,4 +196,8 @@ const Nick = styled.div`
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
+`;
+
+const LottieWrap = styled.div`
+  min-width: 6rem;
 `;
