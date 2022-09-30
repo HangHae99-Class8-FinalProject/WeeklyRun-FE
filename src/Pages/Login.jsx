@@ -20,7 +20,9 @@ const Login = () => {
     window.addEventListener("beforeinstallprompt", e => {
       e.preventDefault();
       deferredPrompt.current = e;
-      setVisible(true);
+      if (deferredPrompt.current) {
+        setVisible(true);
+      }
     });
   }, []);
 
