@@ -28,7 +28,6 @@ const Login = () => {
     }
   }, [deferredPrompt]);
 
-  console.log(deferredPrompt.current);
   const installApp = () => {
     if (!deferredPrompt.current) return false;
     //홈 화면에 추가시키기
