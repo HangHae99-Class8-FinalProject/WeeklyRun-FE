@@ -29,7 +29,6 @@ const UserList = () => {
   if (data?.pages[0]?.Post?.length < 1) {
     return <NonePost>작성한 게시물이 없어요</NonePost>;
   }
-  console.log(data?.pages[0].Post[0].likeDone);
 
   return (
     <>
