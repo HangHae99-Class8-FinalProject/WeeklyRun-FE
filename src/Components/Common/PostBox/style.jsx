@@ -41,13 +41,15 @@ export const StyleFrofileImg = styled.img`
 
 export const StyleSpeed = styled.div`
   display: flex;
+  position: absolute;
   width: 100%;
   height: 100%;
+  padding: 0 1rem;
+  z-index: 100;
   & div {
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-family: "Anton";
     font-weight: 900;
     color: #1a1a1a;
@@ -59,7 +61,7 @@ export const StyleSpeed = styled.div`
   & > div > div > div {
     display: flex;
     justify-content: start;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
 `;
 

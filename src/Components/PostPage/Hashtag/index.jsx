@@ -92,13 +92,14 @@ const InputWrap = styled.div`
     background-color: inherit;
     font-size: 1.6rem;
     opacity: 0.4;
+    width: 20%;
   }
 `;
 
 const HashTagInput = styled.input`
   font-size: 1.6rem;
   border: none;
-  width: 80%;
+  width: 70%;
   &:focus {
     outline: none;
   }

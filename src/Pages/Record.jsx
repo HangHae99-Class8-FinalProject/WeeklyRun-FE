@@ -215,7 +215,7 @@ const StartButton = styled.div`
   justify-content: center;
   align-items: center;
   padding: 1rem 5rem;
-  p {
+  div {
     font-family: "Anton";
     font-size: 4.6rem;
     line-height: 5.5rem;
