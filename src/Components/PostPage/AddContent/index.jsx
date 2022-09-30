@@ -4,6 +4,7 @@ import { useRecoilState } from "recoil";
 
 import useInput from "../../../Hooks/useInput";
 import { postData } from "../../../Recoil/Atoms/PostData";
+import { isAndroid } from "react-device-detect";
 
 const AddContent = ({ merge, prevContent }) => {
   const [content, onChangeContent] = useInput(prevContent || "");
@@ -14,6 +15,17 @@ const AddContent = ({ merge, prevContent }) => {
   useLayoutEffect(() => {
     if (textRef.current !== null) textRef.current.focus();
   });
+
+  useLayoutEffect(() => {
+    const detecMobileKeyboard = () => {
+      if (isAndroid) {
+        textRef.current.scrollIntoView({ blok: "end" });
+      }
+    };
+    window.addEventListener("resize", detecMobileKeyboard);
+
+    return () => window.removeEventListener("resize", detecMobileKeyboard);
+  }, []);
 
   useEffect(() => {
     if (merge) {
