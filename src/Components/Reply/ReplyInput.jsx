@@ -130,8 +130,8 @@ const ReplyInput = () => {
 export default ReplyInput;
 
 const InputWrap = styled.div`
-  position: fixed;
-  bottom: ${({ isAndroid }) => (isAndroid ? "50%" : "7rem")};
+  position: ${({ isAndroid }) => (isAndroid ? "relative" : "fixed")};
+  bottom: ${({ isAndroid }) => (isAndroid ? "0" : "7rem")};
   background: #353434;
   width: 100%;
   height: 5.4rem;
