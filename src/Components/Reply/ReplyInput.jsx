@@ -13,6 +13,7 @@ import { editRecomment } from "../../Hooks/useRecomment";
 
 const ReplyInput = () => {
   const inputRef = useRef(null);
+  const formRef = useRef(null);
   const [replyValue, onChangeReplyValue, setReplyValue] = useInput("");
   const [inputState, setInputState] = useRecoilState(replyState);
   const { showInput, postId, recommentId } = inputState;
@@ -21,7 +22,18 @@ const ReplyInput = () => {
 
   useLayoutEffect(() => {
     if (inputRef.current !== null) inputRef.current.focus();
-  });
+  }, []);
+
+  useLayoutEffect(() => {
+    const detecMobileKeyboard = () => {
+      if (isAndroid) {
+        formRef.current.scrollIntoView({ blok: "end" });
+      }
+    };
+    window.addEventListener("resize", detecMobileKeyboard);
+
+    return () => window.removeEventListener("resize", detecMobileKeyboard);
+  }, []);
 
   //댓글 작성
   const addReplyData = useMutation(reply => addReply(reply), {
@@ -115,7 +127,7 @@ const ReplyInput = () => {
 
   return (
     <>
-      <form onSubmit={handleAddreply}>
+      <form onSubmit={handleAddreply} ref={formRef}>
         <InputWrap isAndroid={isAndroid}>
           <div>
             <input ref={inputRef} value={replyValue} onChange={onChangeReplyValue} />
@@ -131,7 +143,7 @@ export default ReplyInput;
 
 const InputWrap = styled.div`
   position: fixed;
-  bottom: ${({ isAndroid }) => (isAndroid ? "47%" : "7rem")};
+  bottom: 7rem;
   background: #353434;
   width: 100%;
   height: 5.4rem;
