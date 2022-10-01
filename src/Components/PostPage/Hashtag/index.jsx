@@ -23,7 +23,7 @@ const Hashtag = ({ merge, prevHashtag }) => {
     window.addEventListener("resize", detecMobileKeyboard);
 
     return () => window.removeEventListener("resize", detecMobileKeyboard);
-  }, []);
+  });
 
   useEffect(() => {
     hashArr.length >= 5 ? setStop(true) : setStop(false);

@@ -25,7 +25,7 @@ const AddContent = ({ merge, prevContent }) => {
     window.addEventListener("resize", detecMobileKeyboard);
 
     return () => window.removeEventListener("resize", detecMobileKeyboard);
-  }, []);
+  });
 
   useEffect(() => {
     if (merge) {
