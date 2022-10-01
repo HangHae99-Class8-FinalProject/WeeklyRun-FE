@@ -142,7 +142,7 @@ const PostBody = styled.div`
   align-items: flex-start;
   padding: 0rem;
   padding: 2rem 2rem 0rem;
-  margin-bottom: 5rem;
+  margin-bottom: 40rem;
 `;
 
 const PostMap = styled.div`
