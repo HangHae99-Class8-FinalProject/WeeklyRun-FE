@@ -100,11 +100,6 @@ const InputWrap = styled.div`
   padding: 1rem 1.5rem;
   display: flex;
   justify-content: space-between;
-`;
-
-const HashTagInput = styled.input`
-  font-size: 1.6rem;
-  border: none;
 
   & button {
     border: none;
@@ -113,6 +108,11 @@ const HashTagInput = styled.input`
     opacity: 0.4;
     width: 30%;
   }
+`;
+
+const HashTagInput = styled.input`
+  font-size: 1.6rem;
+  border: none;
 
   width: 70%;
   &:focus {
