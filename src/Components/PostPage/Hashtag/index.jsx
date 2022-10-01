@@ -5,7 +5,7 @@ import { isAndroid } from "react-device-detect";
 
 import { useRecoilState } from "recoil";
 import { postData } from "../../../Recoil/Atoms/PostData";
-import { ReactComponent as CancelIcon } from "../../../Static/Icons/cancel_Icon.svg";
+import CancelIcon from "../../../Static/Icons/cancel_Icon.svg";
 
 const Hashtag = ({ merge, prevHashtag }) => {
   const [hashtag, onChangeHashtag, setHashtag] = useInput("");
@@ -78,7 +78,7 @@ const Hashtag = ({ merge, prevHashtag }) => {
           return (
             <div key={idx} value={hash} onClick={deleteTagItem}>
               <span>{"#" + hash}</span>
-              <CancelIcon />
+              <img src={CancelIcon} onClick={deleteTagItem} />
             </div>
           );
         })}
@@ -100,19 +100,20 @@ const InputWrap = styled.div`
   padding: 1rem 1.5rem;
   display: flex;
   justify-content: space-between;
+`;
+
+const HashTagInput = styled.input`
+  font-size: 1.6rem;
+  border: none;
 
   & button {
     border: none;
     background-color: inherit;
     font-size: 1.6rem;
     opacity: 0.4;
-    width: 20%;
+    width: 30%;
   }
-`;
 
-const HashTagInput = styled.input`
-  font-size: 1.6rem;
-  border: none;
   width: 70%;
   &:focus {
     outline: none;
