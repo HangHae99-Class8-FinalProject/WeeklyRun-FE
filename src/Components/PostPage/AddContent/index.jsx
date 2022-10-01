@@ -19,7 +19,7 @@ const AddContent = ({ merge, prevContent }) => {
   useLayoutEffect(() => {
     const detecMobileKeyboard = () => {
       if (isAndroid) {
-        textRef.current.scrollIntoView({ blok: "end" });
+        textRef.current.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
       }
     };
     window.addEventListener("resize", detecMobileKeyboard);
