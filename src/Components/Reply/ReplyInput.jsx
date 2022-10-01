@@ -132,7 +132,7 @@ export default ReplyInput;
 
 const InputWrap = styled.div`
   position: fixed;
-  bottom: ${({ isAndroid }) => (isAndroid ? "42%" : "7rem")};
+  bottom: ${({ isAndroid }) => (isAndroid ? "42.5%" : "7rem")};
   background: #353434;
   width: 100%;
   height: 5.4rem;

@@ -103,7 +103,7 @@ const Post = () => {
       </PostHeader>
       <PostBody>
         <PostMap>
-          <KakaoMap path={runLog.path} />
+          <KakaoMap path={runLog.path} size={{ withd: "50%", height: "16rem" }} />
         </PostMap>
         <AddPhoto merge={merge} />
         <AddContent merge={merge} prevContent={runLog.content} />
@@ -142,6 +142,7 @@ const PostBody = styled.div`
   align-items: flex-start;
   padding: 0rem;
   padding: 2rem 2rem 0rem;
+  margin-bottom: 5rem;
 `;
 
 const PostMap = styled.div`

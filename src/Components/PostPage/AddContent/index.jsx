@@ -47,7 +47,7 @@ export default AddContent;
 
 const ContentBox = styled.div`
   width: 98%;
-  height: 22rem;
+  height: 11rem;
 `;
 
 const Write = styled.textarea`
@@ -56,7 +56,7 @@ const Write = styled.textarea`
   padding: 1rem 0 1rem 1rem;
   gap: 1rem;
   width: 100%;
-  height: 18rem;
+  height: 9rem;
   &:focus {
     outline: none;
   }
