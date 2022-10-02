@@ -57,7 +57,7 @@ const Nav = () => {
 
   const naverLogout = async () => {
     window.location.href = "http://nid.naver.com/nidlogin.logout";
-    window.location.href = "http://localhost:3000";
+    window.location.href = "https://weeklyrun.com";
   };
 
   const logoutConfirm = () => {
