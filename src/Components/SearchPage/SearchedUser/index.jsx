@@ -26,7 +26,6 @@ const SearchedUser = ({ searchTag }) => {
     });
   };
 
-  console.log(data);
   return (
     <>
       {data?.map(user => {
