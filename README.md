@@ -39,7 +39,8 @@
 </div>
 
 # 아키텍쳐
-<img width="1028" alt="스크린샷 2022-09-29 오후 9 50 36" src="https://user-images.githubusercontent.com/104764474/193035998-bd6c1c03-cffc-4539-ac81-96a4740da495.png">
+![스크린샷 2022-10-03 오후 1 38 59](https://user-images.githubusercontent.com/104764474/193502802-0399a082-4875-405b-9bec-bac7749a3511.png)
+
 
 # 라이브러리
 ### 1. React Query
