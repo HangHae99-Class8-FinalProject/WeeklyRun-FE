@@ -34,11 +34,3 @@ export const StyleNewSpan = styled.span`
 export const StyleLikeSpan = styled.span`
   color: ${({ Filter }) => (Filter ? "#000000" : "#999999")};
 `;
-
-export const Banner = styled.div`
-  & img {
-    width: 100%;
-    height: 10rem;
-  }
-  margin-bottom: 1.5rem;
-`;

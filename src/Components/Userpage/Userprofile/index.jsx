@@ -12,7 +12,6 @@ import { ReactComponent as Profile } from "../../../Static/Icons/myPageProfile.s
 import TrophyIcon from "../../../Static/Icons/trophy.png";
 
 const Userprofile = ({ userNickname, userData }) => {
-  const { nickname } = useParams();
   const [show, setShow] = useRecoilState(NavState);
   const [navState, setNavState] = useRecoilState(NavStates);
 
@@ -24,17 +23,17 @@ const Userprofile = ({ userNickname, userData }) => {
         <StyleHeader>
           <div>
             <span>유저페이지</span>
-            {nickname === userNickname && (
+            {userData?.nickname === userNickname && (
               <Option
                 onClick={() => {
-                  setShow(3);
+                  setShow(4);
                   setNaveState("option");
                 }}
               />
             )}
           </div>
         </StyleHeader>
-        {nickname === userNickname ? (
+        {userData?.nickname === userNickname ? (
           <>
             <StyleUsrBox>
               <div>
@@ -58,7 +57,7 @@ const Userprofile = ({ userNickname, userData }) => {
               </div>
 
               <UserTitle>
-                {nickname}님의 주간 목표
+                {userData?.nickname}님의 주간 목표
                 <RankLink to="/rank">
                   <img src={TrophyIcon} />
                 </RankLink>
@@ -77,7 +76,7 @@ const Userprofile = ({ userNickname, userData }) => {
               </div>
 
               <UserTitle>
-                {nickname}님의 주간 목표
+                {userData?.nickname}님의 주간 목표
                 <RankLink to="/rank">
                   <img src={TrophyIcon} />
                 </RankLink>

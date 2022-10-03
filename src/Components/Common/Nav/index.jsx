@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
-import { StyleNav, StyleShow, StyleButton, StyleShowBackgroud } from "./style";
+import React, { useRef, useCallback, useState } from "react";
+import { StyleNav, StyleShow, StyleButton, StyleShowBackgroud, EditNickInput } from "./style";
 import { NavState, PreviewImg, NavStates, NavPostData } from "../../../Recoil/Atoms/OptionAtoms";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { ReactComponent as Home } from "../../../Static/Icons/home.svg";
@@ -8,21 +8,26 @@ import { ReactComponent as Run } from "../../../Static/Icons/run.svg";
 import { ReactComponent as Mypage } from "../../../Static/Icons/mypage.svg";
 
 import { useUserProfileMutation } from "../../../Hooks/useProfile";
+import { EditNicknameMutation } from "../../../Hooks/useProfile";
 import { instance } from "../../../Utils/Instance";
 import { useNavigate, useLocation } from "react-router-dom";
 import imageCompression from "browser-image-compression";
 import { useDeletePost } from "../../../Hooks/useDeletePost";
+import Modal from "../../Common/Modal/Modal";
 
 const Nav = () => {
   const { state } = useLocation();
   const { mutate: deletePost } = useDeletePost();
   const { mutate: postProfile } = useUserProfileMutation();
+  const { mutate: editNickname } = EditNicknameMutation();
   const navigate = useNavigate();
   const [show, setShow] = useRecoilState(NavState);
   const [preview, setPreview] = useRecoilState(PreviewImg);
   const navEvent = useRecoilValue(NavStates);
   const postData = useRecoilValue(NavPostData);
   const imgVal = useRef(null);
+  const [showEditNickname, SetShowEditNickname] = useState(false);
+  const [nicknameInput, setNicknameInput] = useState("");
 
   const options = {
     maxSizeMB: 1,
@@ -78,7 +83,6 @@ const Nav = () => {
     const { data } = await instance.delete("/api/user").then(() => {
       localStorage.clear();
     });
-
     return data;
   };
 
@@ -99,6 +103,26 @@ const Nav = () => {
     }
   };
 
+  const editNicknameModal = useCallback(() => {
+    SetShowEditNickname(prev => !prev);
+    setNicknameInput("");
+  }, []);
+
+  const onChangeNickname = e => {
+    const { value } = e.target;
+    const onlyHangul = value.replace(/[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g, "");
+    setNicknameInput(onlyHangul);
+  };
+
+  const onEditNickname = () => {
+    const getData = JSON.parse(localStorage.getItem("userData"));
+    getData.nickname = nicknameInput;
+    editNickname(nicknameInput);
+    localStorage.setItem("userData", JSON.stringify(getData));
+    setNicknameInput("");
+    SetShowEditNickname(prev => !prev);
+  };
+
   return (
     <>
       <StyleNav>
@@ -115,6 +139,7 @@ const Nav = () => {
                 >
                   문제 신고하기
                 </p>
+                <p onClick={editNicknameModal}>닉네임 변경하기</p>
                 <p
                   onClick={() => {
                     logoutConfirm();
@@ -262,6 +287,17 @@ const Nav = () => {
           </div>
         </StyleButton>
       </StyleNav>
+      {showEditNickname && (
+        <Modal onClickNo={editNicknameModal} onClickYes={onEditNickname}>
+          <EditNickInput
+            value={nicknameInput}
+            onChange={onChangeNickname}
+            placeholder="닉네임을 입력해 주세요."
+            maxLength={5}
+          ></EditNickInput>
+          <p>닉네임을 수정하시겠어요?</p>
+        </Modal>
+      )}
     </>
   );
 };

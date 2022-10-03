@@ -54,10 +54,10 @@ const PostBox = styled.div`
 `;
 const PostBody = styled.div`
   font-size: 1rem;
+  font-size: 1.2rem;
 `;
 const Nick = styled.div`
   font-family: "Anton";
-  font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
 `;

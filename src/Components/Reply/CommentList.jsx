@@ -189,11 +189,11 @@ const CommentFooter = styled.div`
 
 const CommentBody = styled.div`
   width: 80%;
+  font-size: 1.2rem;
 `;
 
 const Nick = styled.div`
   font-family: "Anton";
-  font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
 `;
