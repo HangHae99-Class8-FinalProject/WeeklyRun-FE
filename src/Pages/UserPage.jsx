@@ -5,6 +5,7 @@ import Progress from "../Components/Userpage/Progress";
 import UserList from "../Components/Userpage/UserList";
 import Goal from "../Components/Userpage/Goal";
 import EventModal from "../Components/Common/EventModal";
+import PrevRecord from "../Components/Userpage/PrevRecord";
 
 import { useProgress } from "../Hooks/useProgress";
 import { useGetUserData } from "../Hooks/useGetUserData";
@@ -15,6 +16,7 @@ import { instance } from "../Utils/Instance";
 const UserPage = () => {
   const { state } = useLocation();
   const [showEventModal, setShowEventModal] = useState(true);
+  const [showPrevRecord, setShowPrevRecord] = useState(true);
   const accessToken = localStorage.getItem("userData");
   const parseData = JSON.parse(accessToken);
   const userNickname = parseData.nickname;

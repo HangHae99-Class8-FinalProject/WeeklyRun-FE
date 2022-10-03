@@ -120,6 +120,9 @@ const RunningMap = ({ stopInterval, endRun }) => {
     return (
       <Loading>
         <div>지도 정보를 가져오고 있어요</div>
+        <p>
+          위치 정보를 허용 해주시지 않으면 <br /> 지도가 나타나지 않아요
+        </p>
       </Loading>
     );
   }
