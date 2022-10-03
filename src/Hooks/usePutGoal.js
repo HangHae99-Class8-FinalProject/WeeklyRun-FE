@@ -2,7 +2,7 @@ import { useMutation, UseMutationResult, useQueryClient } from "react-query";
 import { instance } from "../Utils/Instance";
 
 const putGoal = async goal => {
-  return await instance.put(`/api/user/goal`, goal);
+  return await instance.put(`/api/user/goal`, { goal });
 };
 export const usePutGoal = () => {
   const queryClient = useQueryClient();

@@ -17,7 +17,8 @@ import {
   StyleHashBox,
   StyleContent,
   StyleComment,
-  StyleTime
+  StyleTime,
+  ScrollBox
 } from "./style";
 
 import { ReactComponent as Heart } from "../../../Static/Icons/heart.svg";
@@ -96,7 +97,6 @@ const PostBox = ({ posts, index }) => {
               src={posts.profile}
             ></StyleFrofileImg>
           )}
-          <div></div>
           <span>{posts.nickname}</span>
         </StyleFrofile>
         <div style={{ display: "flex" }}>
@@ -124,6 +124,22 @@ const PostBox = ({ posts, index }) => {
         </div>
       </StyleFrofileBox>
 
+      <StyleSpeed>
+        <div>
+          <div>
+            <div>거리</div>
+            {posts.distance}Km
+          </div>
+          <div>
+            <div>페이스</div>
+            {posts.pace}
+          </div>
+          <div>
+            <div>시간</div>
+            {divideTime(posts.time)}
+          </div>
+        </div>
+      </StyleSpeed>
       <StylePath>
         <Swiper
           pagination={{
@@ -131,30 +147,15 @@ const PostBox = ({ posts, index }) => {
           }}
           modules={[Pagination]}
         >
-          <SwiperSlide>
-            <StyleSpeed>
-              <div>
-                <div>
-                  <div>거리</div>
-                  {posts.distance}Km
-                </div>
-                <div>
-                  <div>페이스</div>
-                  {posts.pace}
-                </div>
-                <div>
-                  <div>시간</div>
-                  {divideTime(posts.time)}
-                </div>
-              </div>
-            </StyleSpeed>
-            <KakaoMap path={posts.path}></KakaoMap>
-          </SwiperSlide>
           {posts.prevImage.map((img, index) => (
             <SwiperSlide key={index}>
               <StyleImg src={img} alt="img"></StyleImg>
             </SwiperSlide>
           ))}
+          <SwiperSlide>
+            <ScrollBox></ScrollBox>
+            <KakaoMap path={posts.path}></KakaoMap>
+          </SwiperSlide>
         </Swiper>
       </StylePath>
       <StyleContentBox>

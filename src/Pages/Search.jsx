@@ -19,6 +19,7 @@ const Search = () => {
   const [selectedTab, setSelectedTab] = useState("태그");
 
   const onShowRelatedBar = useCallback(() => {
+    setSearchTag("");
     setShowRelatedBar(true);
   }, []);
 

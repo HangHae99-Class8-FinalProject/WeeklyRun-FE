@@ -31,7 +31,7 @@ const SearchedUser = ({ searchTag }) => {
       {data?.map(user => {
         return (
           <SearchUserWrap key={user.nickname} onClick={() => navUserPage(user.nickname, user.userId)}>
-            {user.profile ? <img src={user.profile} /> : <img src={Profile} />}
+            {user.image ? <img src={user.image} /> : <img src={Profile} />}
             <div>{user.nickname}</div>
           </SearchUserWrap>
         );

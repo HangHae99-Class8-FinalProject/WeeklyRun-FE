@@ -1,11 +1,9 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { StyleFeedWrap, StyleFilter, StyleNewSpan, StyleLikeSpan, Banner } from "./style";
+import { StyleFeedWrap, StyleFilter, StyleNewSpan, StyleLikeSpan } from "./style";
 import LikeList from "../LikeList/index";
 import MainList from "../MainList/index";
 import { useState } from "react";
-
-import BannerImage from "../../../Static/Icons/eventBanner.jpeg";
 
 const googleForms =
   "https://docs.google.com/forms/d/e/1FAIpQLSeWiKM8eSltDGdPzS3c0uQD91BbLAfJRzbUp1ODGnCQFRyHVA/viewform?usp=sf_link";
@@ -16,11 +14,6 @@ const UserfeedList = () => {
 
   return (
     <StyleFeedWrap>
-      <Banner>
-        <a target="_blank" href={googleForms}>
-          <img src={BannerImage} alt="리뷰 이벤트" />
-        </a>
-      </Banner>
       <StyleFilter>
         <p>게시글</p>
         <div>

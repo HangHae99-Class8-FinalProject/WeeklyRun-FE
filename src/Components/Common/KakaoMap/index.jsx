@@ -1,14 +1,16 @@
 import React from "react";
 import { Map, Polyline } from "react-kakao-maps-sdk";
 
-const KakaoMap = ({ path }) => {
+const KakaoMap = ({ path, size }) => {
   return (
     <>
       <Map
-        style={{
-          width: "100%",
-          height: "36rem"
-        }}
+        style={
+          size || {
+            width: "100%",
+            height: "36rem"
+          }
+        }
         center={path[path?.length - 1]}
         zoomable={false}
         draggable={false}

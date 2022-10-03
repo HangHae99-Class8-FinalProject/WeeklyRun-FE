@@ -10,14 +10,17 @@ import PostBox from "../../Common/PostBox";
 const SearchedHashTag = ({ searhValue }) => {
   const [ref, inView] = useInView();
   const [tap, setTap] = useState("최신");
-  const [search, setSearch] = useState(searhValue);
+  const [search, setSearch] = useState("");
 
   const { state } = useLocation();
+
   useEffect(() => {
     if (state && state !== "search") {
       setSearch(state);
+    } else {
+      setSearch(searhValue);
     }
-  }, [state]);
+  }, [state, searhValue]);
 
   const getSearchHashTagOrder = async pageParam => {
     const { data } = await instance.get(`/api/post/search/popular/${pageParam}?hashtag=${search}`);

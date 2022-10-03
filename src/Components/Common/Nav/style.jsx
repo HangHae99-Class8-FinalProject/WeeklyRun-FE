@@ -80,3 +80,19 @@ export const ModalBox = styled.div`
     display: flex;
   }
 `;
+
+export const EditNickInput = styled.input`
+  display: flex;
+  position: relative;
+  top: 3rem;
+  width: 75%;
+  height: 3rem;
+  border-radius: 1rem;
+  background: rgba(153, 153, 153, 0.5);
+  border: none;
+  padding: 0.5rem;
+  text-align: center;
+  & :focus {
+    outline: none;
+  }
+`;

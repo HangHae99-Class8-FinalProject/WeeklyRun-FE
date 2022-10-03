@@ -41,11 +41,10 @@ export const StyleFrofileImg = styled.img`
 
 export const StyleSpeed = styled.div`
   display: flex;
-  position: absolute;
+  /* position: absolute; */
   width: 100%;
   height: 100%;
   padding: 0 1rem;
-  z-index: 100;
   & div {
     width: 100%;
     display: flex;
@@ -165,4 +164,12 @@ export const StyleComment = styled.div`
 export const StyleTime = styled.div`
   color: #999999;
   font-size: 1.2rem;
+`;
+
+export const ScrollBox = styled.div`
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
 `;

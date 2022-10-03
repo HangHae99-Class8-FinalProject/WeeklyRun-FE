@@ -152,6 +152,7 @@ const Image = styled.img`
   width: 16rem;
   height: 16rem;
   margin: 0rem 10.8rem 7.2rem;
+  border-radius: 50%;
 `;
 
 const FileBox = styled.input`
