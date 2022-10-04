@@ -62,6 +62,7 @@ const Record = () => {
 
     if (Number(runLog.distance) <= 0) {
       setNoRecord(true);
+      return;
     }
     setEndRun(true);
   });
@@ -73,7 +74,7 @@ const Record = () => {
         distance: runLog.distance,
         time: totalTime
       });
-      if (data?.sec) {
+      if (data) {
         setPath(prev => ({
           ...prev,
           pace: data
