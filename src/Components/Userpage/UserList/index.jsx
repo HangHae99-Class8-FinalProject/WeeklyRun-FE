@@ -3,13 +3,13 @@ import React, { useEffect } from "react";
 import { StyleUserListWrap, NonePost } from "./style";
 import useInfinityScroll from "../../../Hooks/useInfinityScroll";
 import PostBox from "../../Common/PostBox";
-import { useParams } from "react-router-dom";
+
 import { useInView } from "react-intersection-observer";
 
 import { instance } from "../../../Utils/Instance";
 
-const UserList = () => {
-  const { nickname } = useParams();
+const UserList = ({ userData }) => {
+  const nickname = userData?.nickname;
 
   const fetchUserList = async pageParam => {
     const res = await instance.get(`/api/user/post/${nickname}/${pageParam}`);
@@ -17,11 +17,9 @@ const UserList = () => {
     return { Post, nextPage: pageParam + 1, isLast };
   };
 
-  const { data, status, fetchNextPage, isFetchingNextPage, hasNextPage } = useInfinityScroll(
-    ["user", nickname],
-    fetchUserList
-  );
+  const { data, fetchNextPage, isFetchingNextPage, hasNextPage } = useInfinityScroll(["user", nickname], fetchUserList);
   const [ref, inView] = useInView();
+
   useEffect(() => {
     if (inView && hasNextPage) fetchNextPage();
   }, [inView, hasNextPage]);

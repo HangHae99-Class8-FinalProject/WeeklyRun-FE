@@ -52,7 +52,7 @@ const UserPage = () => {
         ) : (
           <Goal done={goalData?.result} userNickname={userNickname}></Goal>
         )}
-        <UserList></UserList>
+        <UserList userData={userData}></UserList>
       </Layout>
     </>
   );
