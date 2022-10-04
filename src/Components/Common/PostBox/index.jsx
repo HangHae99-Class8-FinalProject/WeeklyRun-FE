@@ -132,7 +132,7 @@ const PostBox = ({ posts, index }) => {
           </div>
           <div>
             <div>페이스</div>
-            {posts.pace ? posts.pace : null}
+            {posts.pace}
           </div>
           <div>
             <div>시간</div>

@@ -26,25 +26,21 @@ const RankBody = ({ rankData, userRank }) => {
 
   return (
     <RankListWrap>
-      {userRank?.myRanking > 5 && (
-        <>
-          <UserRank>
-            <RankList onClick={() => goToUser(userRank.nickname, userRank?.userId)}>
-              <tr>
-                <td>
-                  <div>{userRank?.myRanking}</div>
-                </td>
-                <td>{userRank?.image ? <img src={userRank?.image} /> : <Profile />}</td>
-                <td>{userRank?.nickname}</td>
-                <td>
-                  <div>{userRank?.distance}Km</div>
-                  <div>{divideTime(userRank?.time)}</div>
-                </td>
-              </tr>
-            </RankList>
-          </UserRank>
-        </>
-      )}
+      <UserRank>
+        <RankList onClick={() => goToUser(userRank.nickname, userRank?.userId)}>
+          <tr>
+            <td>
+              <div>{userRank?.myRanking}</div>
+            </td>
+            <td>{userRank?.image ? <img src={userRank?.image} /> : <Profile />}</td>
+            <td>{userRank?.nickname}</td>
+            <td>
+              <div>{userRank?.distance}Km</div>
+              <div>{divideTime(userRank?.time)}</div>
+            </td>
+          </tr>
+        </RankList>
+      </UserRank>
       {rankData?.map((ranking, idx) => {
         return (
           <RankList key={idx} onClick={() => goToUser(ranking.nickname, ranking.userId)}>
