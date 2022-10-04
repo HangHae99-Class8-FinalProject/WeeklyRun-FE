@@ -39,7 +39,9 @@ const UserPage = () => {
       const res = await instance.get("/api/user/research");
       setShowEventModal(res.data?.result);
     }
-    getShowEvent();
+    if (userData.nickname === userNickname) {
+      getShowEvent();
+    }
   }, []);
 
   return (
