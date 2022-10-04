@@ -71,53 +71,53 @@ self.addEventListener("message", event => {
 
 // Any other custom service worker logic can go here.
 
-const STATIC_CACHE = "static-cache";
+// const STATIC_CACHE = "static-cache";
 
-const staticCache = [
-  "../src/Static/Font/Anton-Regular.ttf",
-  "../src/Static/Font/NotoSansKR-Regular.otf",
-  "../src/Static/Font/Font.css",
-  "../src/Static/Lottie/LoadingLottie.json",
-  "../src/Static/Lottie/leftArrow.json",
-  "../src/Static/Lottie/RightArrow.json",
-  "../src/Static/Icons/BackIcon.svg",
-  "../src/Static/Icons/cancel_Icon.svg",
-  "../src/Static/Icons/commnet.svg",
-  "../src/Static/Icons/dot.svg",
-  "../src/Static/Icons/eventBanner.jpeg",
-  "../src/Static/Icons/heart.svg",
-  "../src/Static/Icons/home.svg",
-  "../src/Static/Icons/MainLogo.svg",
-  "../src/Static/Icons/mypage.svg",
-  "../src/Static/Icons/myPageProfile.svg",
-  "../src/Static/Icons/option.svg",
-  "../src/Static/Icons/profile.svg",
-  "../src/Static/Icons/view.svg"
-];
+// const staticCache = [
+//   "../src/Static/Font/Anton-Regular.ttf",
+//   "../src/Static/Font/NotoSansKR-Regular.otf",
+//   "../src/Static/Font/Font.css",
+//   "../src/Static/Lottie/LoadingLottie.json",
+//   "../src/Static/Lottie/leftArrow.json",
+//   "../src/Static/Lottie/RightArrow.json",
+//   "../src/Static/Icons/BackIcon.svg",
+//   "../src/Static/Icons/cancel_Icon.svg",
+//   "../src/Static/Icons/commnet.svg",
+//   "../src/Static/Icons/dot.svg",
+//   "../src/Static/Icons/eventBanner.jpeg",
+//   "../src/Static/Icons/heart.svg",
+//   "../src/Static/Icons/home.svg",
+//   "../src/Static/Icons/MainLogo.svg",
+//   "../src/Static/Icons/mypage.svg",
+//   "../src/Static/Icons/myPageProfile.svg",
+//   "../src/Static/Icons/option.svg",
+//   "../src/Static/Icons/profile.svg",
+//   "../src/Static/Icons/view.svg"
+// ];
 
-self.addEventListener("install", event => {
-  event.waitUntil(
-    caches.open(STATIC_CACHE).then(cache => {
-      return cache.addAll(staticCache).then(() => {
-        return self.skipWaiting();
-      });
-    })
-  );
-});
+// self.addEventListener("install", event => {
+//   event.waitUntil(
+//     caches.open(STATIC_CACHE).then(cache => {
+//       return cache.addAll(staticCache).then(() => {
+//         return self.skipWaiting();
+//       });
+//     })
+//   );
+// });
 
-self.addEventListener("activate", event => {
-  let cacheWhiteList = [STATIC_CACHE];
+// self.addEventListener("activate", event => {
+//   let cacheWhiteList = [STATIC_CACHE];
 
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheWhiteList.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
-  );
-  return self.clients.claim();
-});
+//   event.waitUntil(
+//     caches.keys().then(cacheNames => {
+//       return Promise.all(
+//         cacheNames.map(cacheName => {
+//           if (cacheWhiteList.indexOf(cacheName) === -1) {
+//             return caches.delete(cacheName);
+//           }
+//         })
+//       );
+//     })
+//   );
+//   return self.clients.claim();
+// });
