@@ -1,4 +1,5 @@
-![스크린샷 2022-09-29 오후 6 33 01](https://user-images.githubusercontent.com/104764474/193014502-654a27b5-5511-4c94-b878-5356659c1ab3.png)
+![KakaoTalk_Photo_2022-10-04-16-55-33](https://user-images.githubusercontent.com/104764474/193819731-ab83241b-e3b6-4dee-90b4-738e58a6c18e.png)
+
 <br/>
 # WeeklyRun
 런닝을 하고 싶은데 동기부여가 있으면 좋겠나요?<br/>
