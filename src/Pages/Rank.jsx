@@ -10,12 +10,18 @@ const Rank = () => {
     return data;
   };
 
-  const { data } = useQuery("getRank", getRanking);
+  const getUserRank = async () => {
+    const { data } = await instance.get("/api/user/myrank");
+    return data;
+  };
+
+  const { data: rankingData } = useQuery("getRank", getRanking);
+  const { data: userRank } = useQuery("getUserRank", getUserRank);
 
   return (
     <>
       <RankHeader />
-      <RankBody rankData={data} />
+      <RankBody rankData={rankingData} userRank={userRank} />
     </>
   );
 };

@@ -1,17 +1,16 @@
 import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import { useInfiniteQuery } from "react-query";
 import { instance } from "../../../Utils/Instance";
 import useInfinityScroll from "../../../Hooks/useInfinityScroll";
 import PostBox from "../../Common/PostBox";
 
 const LikeList = () => {
   const fetchLikeList = async pageParam => {
-    const { data } = await instance.get(`/api/post/popular/${pageParam}`);
-
-    return data;
+    const res = await instance.get(`/api/post/popular/${pageParam}`);
+    const { Post, isLast } = res.data;
+    return { Post, nextPage: pageParam + 1, isLast };
   };
-  const { ref, inView } = useInView()
+  const { ref, inView } = useInView();
 
   const { data, fetchNextPage, isFetchingNextPage } = useInfinityScroll("like", fetchLikeList);
 

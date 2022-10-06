@@ -23,17 +23,20 @@ const SearchedHashTag = ({ searhValue }) => {
   }, [state, searhValue]);
 
   const getSearchHashTagOrder = async pageParam => {
-    const { data } = await instance.get(`/api/post/search/popular/${pageParam}?hashtag=${search}`);
-    return data;
+    const res = await instance.get(`/api/post/search/popular/${pageParam}?hashtag=${search}`);
+
+    const { Post, isLast } = res.data;
+    return { Post, nextPage: pageParam + 1, isLast };
   };
 
   const getSearchHashTagNewest = async pageParam => {
-    const { data } = await instance.get(`/api/post/search/new/${pageParam}?hashtag=${search}`);
-    return data;
+    const res = await instance.get(`/api/post/search/new/${pageParam}?hashtag=${search}`);
+    const { Post, isLast } = res.data;
+    return { Post, nextPage: pageParam + 1, isLast };
   };
 
   const { data, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
-    ["searchHashtag", search],
+    ["searchHashtag", search, tap],
     ({ pageParam = 1 }) => (tap === "인기" ? getSearchHashTagOrder(pageParam) : getSearchHashTagNewest(pageParam)),
     {
       enabled: !!search,
@@ -44,6 +47,8 @@ const SearchedHashTag = ({ searhValue }) => {
   useEffect(() => {
     if (inView && search) fetchNextPage();
   }, [inView, search]);
+
+  console.log(data);
 
   return (
     <Body>

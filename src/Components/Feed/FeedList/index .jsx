@@ -5,9 +5,6 @@ import LikeList from "../LikeList/index";
 import MainList from "../MainList/index";
 import { useState } from "react";
 
-const googleForms =
-  "https://docs.google.com/forms/d/e/1FAIpQLSeWiKM8eSltDGdPzS3c0uQD91BbLAfJRzbUp1ODGnCQFRyHVA/viewform?usp=sf_link";
-
 const UserfeedList = () => {
   const [filter, setFilter] = useState(false);
   const { state } = useLocation();

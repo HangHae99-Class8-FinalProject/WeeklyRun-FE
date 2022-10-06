@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ReactComponent as Profile } from "../../../Static/Icons/myPageProfile.svg";
 import { useNavigate } from "react-router-dom";
 
-const RankBody = ({ rankData }) => {
+const RankBody = ({ rankData, userRank }) => {
   const navigate = useNavigate();
 
   const divideTime = useCallback(time => {
@@ -26,6 +26,21 @@ const RankBody = ({ rankData }) => {
 
   return (
     <RankListWrap>
+      <UserRank>
+        <RankList onClick={() => goToUser(userRank.nickname, userRank?.userId)}>
+          <tr>
+            <td>
+              <div>{userRank?.myRanking}</div>
+            </td>
+            <td>{userRank?.image ? <img src={userRank?.image} /> : <Profile />}</td>
+            <td>{userRank?.nickname}</td>
+            <td>
+              <div>{userRank?.distance}Km</div>
+              <div>{divideTime(userRank?.time)}</div>
+            </td>
+          </tr>
+        </RankList>
+      </UserRank>
       {rankData?.map((ranking, idx) => {
         return (
           <RankList key={idx} onClick={() => goToUser(ranking.nickname, ranking.userId)}>
@@ -51,6 +66,10 @@ export default RankBody;
 
 const RankListWrap = styled.div`
   padding: 0 1.6rem;
+`;
+
+const UserRank = styled.div`
+  background-color: #e6e6e6;
 `;
 const RankList = styled.table`
   padding: 0 2rem;

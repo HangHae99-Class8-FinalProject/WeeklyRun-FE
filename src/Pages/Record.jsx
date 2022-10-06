@@ -22,6 +22,7 @@ const Record = () => {
   const [goal, setGoal] = useState("");
   const [showGoalModal, setShowGoalModal] = useState(false);
   const [showWarningModal, setShowWarningModal] = useState(false);
+  const [showScreenModal, setShowScreenModal] = useState(true);
   const [path, setPath] = useRecoilState(runData);
   const runLog = useRecoilValue(runData);
 
@@ -59,8 +60,9 @@ const Record = () => {
   const onClickEnd = useCallback(async () => {
     setStopInterval(true);
 
-    if (Number(runLog.distance / 1000).toFixed(1) <= 0) {
+    if (Number(runLog.distance) <= 0) {
       setNoRecord(true);
+      return;
     }
     setEndRun(true);
   });
@@ -72,7 +74,7 @@ const Record = () => {
         distance: runLog.distance,
         time: totalTime
       });
-      if (data?.sec) {
+      if (data) {
         setPath(prev => ({
           ...prev,
           pace: data
@@ -132,6 +134,10 @@ const Record = () => {
   const onClickWarningYes = useCallback(() => {
     setShowWarningModal(false);
     navigate("/feed");
+  }, []);
+
+  const onCloseScreen = useCallback(() => {
+    setShowScreenModal(false);
   }, []);
 
   useEffect(() => {
@@ -201,6 +207,14 @@ const Record = () => {
             비 정상적인 속도로 감지되어
             <br />
             기록이 불가능합니다.
+          </p>
+        </Modal>
+      )}
+      {showScreenModal && (
+        <Modal onClickYes={onCloseScreen}>
+          <p>
+            보다 정확한 측정을 위해
+            <br /> 가급적 화면이 켜진 상태로 이용해주세요
           </p>
         </Modal>
       )}

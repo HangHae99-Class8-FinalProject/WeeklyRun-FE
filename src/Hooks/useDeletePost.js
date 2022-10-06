@@ -6,7 +6,7 @@ const deletePost = async postId => {
 export const useDeletePost = () => {
   const queryClient = useQueryClient();
   return useMutation(deletePost, {
-    onSuccess: data => {
+    onSuccess: () => {
       queryClient.invalidateQueries("posts");
       queryClient.invalidateQueries("like");
     },
